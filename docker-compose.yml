@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  vite-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: legaladvise_vite
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      # Evitar reescribir node_modules locales con los del contenedor si existen
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true # Ayuda con el hot-reload en Windows/Docker
+    command: sh -c "if [ ! -f package.json ]; then npm create vite@latest . -- --template vanilla -y && npm install && npm install -D sass && npm run dev -- --host; else npm install && npm run dev -- --host; fi"

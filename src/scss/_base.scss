@@ -1,0 +1,100 @@
+@import "variables";
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $font-secondary;
+    color: $color-text;
+    background-color: $color-light-gray;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-primary;
+    color: $color-primary;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+// Animation Utility Classes
+.pre-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+// Delay animation for staggered grid items
+.experiencia__grid>*:nth-child(1),
+.servicios__grid>*:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.experiencia__grid>*:nth-child(2),
+.servicios__grid>*:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.experiencia__grid>*:nth-child(3),
+.servicios__grid>*:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.servicios__grid>*:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.servicios__grid>*:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.servicios__grid>*:nth-child(6) {
+    transition-delay: 0.6s;
+}

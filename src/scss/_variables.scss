@@ -1,0 +1,19 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+$font-primary: 'Outfit', sans-serif;
+$font-secondary: 'Inter', sans-serif;
+
+// Colors
+$color-primary: #11284b; // Azul oscuro corporativo (Dark blue)
+$color-secondary: #e62336; // Rojo/Carmesí corporativo (Red)
+$color-white: #ffffff;
+$color-light-gray: #f2f5f8;
+$color-text: #333333;
+$color-text-muted: #666666;
+
+// Breakpoints
+$bp-mobile: 480px;
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+$bp-large: 1200px;

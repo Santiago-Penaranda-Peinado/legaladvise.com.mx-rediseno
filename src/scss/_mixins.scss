@@ -1,0 +1,40 @@
+@import "variables";
+
+// Media Queries
+@mixin respond-to($breakpoint) {
+    @if $breakpoint =="mobile" {
+        @media (min-width: $bp-mobile) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =="tablet" {
+        @media (min-width: $bp-tablet) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =="desktop" {
+        @media (min-width: $bp-desktop) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =="large" {
+        @media (min-width: $bp-large) {
+            @content;
+        }
+    }
+}
+
+// Flexbox Centering
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// Hover Transition
+@mixin hover-transition {
+    transition: all 0.3s ease-in-out;
+}
