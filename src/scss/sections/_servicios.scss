@@ -157,3 +157,239 @@
         }
     }
 }
+
+// ── "Ver detalles" button on cards ─────────────────────────
+.btn-service-detail {
+    display: inline-block;
+    padding: 9px 22px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $color-white;
+    border: 1.5px solid rgba($color-white, 0.55);
+    border-radius: 3px;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease;
+    white-space: nowrap;
+
+    &:hover {
+        background: rgba($color-white, 0.12);
+        border-color: $color-gold;
+        color: $color-gold;
+    }
+}
+
+// ── Service Drawer ─────────────────────────────────────────
+
+// Backdrop
+.service-drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba($color-dark, 0.65);
+    backdrop-filter: blur(2px);
+    z-index: 1100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+
+    &.open {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+// Panel
+.service-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 480px;
+    max-width: 100vw;
+    height: 100dvh;
+    background: $color-white;
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: -8px 0 40px rgba(0, 0, 0, 0.18);
+
+    &.open {
+        transform: translateX(0);
+    }
+
+    // Gold accent bar at top
+    &::before {
+        content: '';
+        display: block;
+        height: 4px;
+        flex-shrink: 0;
+        background: linear-gradient(90deg, $color-primary, $color-gold, $color-secondary);
+    }
+
+    // Header
+    &__header {
+        padding: 28px 32px 20px;
+        border-bottom: 1px solid rgba($color-primary, 0.08);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+        flex-shrink: 0;
+    }
+
+    &__titles {
+        flex: 1;
+    }
+
+    &__service-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: $color-gold;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    &__title {
+        font-family: $font-primary;
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: $color-primary;
+        line-height: 1.2;
+        margin: 0;
+    }
+
+    // Close button
+    &__close {
+        width: 36px;
+        height: 36px;
+        border: 1.5px solid rgba($color-primary, 0.2);
+        border-radius: 50%;
+        background: transparent;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $color-primary;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+        transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+
+        &:hover {
+            background: $color-secondary;
+            border-color: $color-secondary;
+            color: $color-white;
+        }
+    }
+
+    // Scrollable body
+    &__body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 28px 32px;
+        scrollbar-width: thin;
+        scrollbar-color: rgba($color-primary, 0.2) transparent;
+    }
+
+    &__intro {
+        font-size: 1rem;
+        color: $color-primary;
+        line-height: 1.7;
+        font-weight: 500;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba($color-primary, 0.08);
+    }
+
+    &__text {
+        font-size: 0.95rem;
+        color: rgba($color-primary, 0.75);
+        line-height: 1.75;
+
+        p {
+            margin-bottom: 14px;
+        }
+    }
+
+    &__list-title {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $color-primary;
+        margin: 20px 0 12px;
+    }
+
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        li {
+            position: relative;
+            padding-left: 22px;
+            font-size: 0.9rem;
+            color: rgba($color-primary, 0.8);
+            line-height: 1.6;
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 9px;
+                width: 8px;
+                height: 8px;
+                background: $color-gold;
+                border-radius: 50%;
+                flex-shrink: 0;
+            }
+        }
+    }
+
+    &__ext-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+        color: $color-secondary;
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+
+    // Footer CTA
+    &__footer {
+        padding: 20px 32px 28px;
+        border-top: 1px solid rgba($color-primary, 0.08);
+        flex-shrink: 0;
+
+        .btn {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    // Mobile: full width
+    @media (max-width: $bp-mobile) {
+        width: 100vw;
+
+        &__header,
+        &__body,
+        &__footer {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+}

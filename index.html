@@ -33,6 +33,7 @@
                     <li><a href="#filosofia" class="nav__link">Filosofía</a></li>
                     <li><a href="#infraestructura" class="nav__link">Infraestructura</a></li>
                     <li><a href="#oficinas" class="nav__link">Cobertura</a></li>
+                    <li><a href="https://www.la-cc.com.mx/" class="nav__link" target="_blank">C.Center</a></li>
                     <li><a href="#servicios" class="nav__link">Servicios</a></li>
                     <li><a href="#contacto" class="nav__link nav__link--cta">Contacto</a></li>
                 </ul>
@@ -51,21 +52,21 @@
         ═══════════════════════════════════════════ -->
         <section id="inicio" class="hero hero--animated">
 
-            <!-- LEFT PANEL: text -->
+            <!-- LEFT PANEL: text — 3 content blocks, JS activates the matching one -->
             <div class="hero__panel-left">
                 <div class="hero__content-wrapper">
-                    <div class="hero__content">
-                        <p class="hero__kicker">Firma Jurídica · Desde 2005</p>
 
+                    <!-- SLIDE 0: identidad de la firma -->
+                    <div class="hero__content active" data-slide="0">
+                        <p class="hero__kicker">Firma Jurídica · Desde 2005</p>
                         <h1 class="hero__headline">
                             LEGAL
                             <em>Advise</em>
                         </h1>
-
                         <p class="hero__subheadline">
-                            Servicios jurídicos de calidad con apego a la ética, defendiendo tus intereses con integridad y experiencia comprobada en todo México.
+                            Servicios jurídicos de calidad con apego a la ética y profesionalismo,
+                            especializados en diversas áreas del Derecho Mexicano.
                         </p>
-
                         <div class="hero__cta">
                             <a href="#contacto" class="btn-hero-primary">
                                 Hablar con un asesor
@@ -76,6 +77,51 @@
                             <a href="#servicios" class="btn-hero-ghost">Ver Servicios</a>
                         </div>
                     </div>
+
+                    <!-- SLIDE 1: equipo experimentado -->
+                    <div class="hero__content" data-slide="1">
+                        <p class="hero__kicker">Equipo Experimentado · +100 Abogados</p>
+                        <h1 class="hero__headline">
+                            EXPERTOS
+                            <em>en Derecho</em>
+                        </h1>
+                        <p class="hero__subheadline">
+                            Trayectoria sólida en litigio mercantil, civil, penal, administrativo
+                            y fiscal. Asesores legales de instituciones bancarias, financieras y corporativas.
+                        </p>
+                        <div class="hero__cta">
+                            <a href="#experiencia" class="btn-hero-primary">
+                                Conocer nuestra firma
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                            <a href="#servicios" class="btn-hero-ghost">Nuestros Servicios</a>
+                        </div>
+                    </div>
+
+                    <!-- SLIDE 2: cobertura nacional -->
+                    <div class="hero__content" data-slide="2">
+                        <p class="hero__kicker">Cobertura Nacional · 5 Ciudades</p>
+                        <h1 class="hero__headline">
+                            PRESENCIA
+                            <em>Nacional</em>
+                        </h1>
+                        <p class="hero__subheadline">
+                            Oficinas en CDMX, Monterrey, Guadalajara, Hermosillo y Mérida.
+                            Tu aliado legal en toda la República Mexicana.
+                        </p>
+                        <div class="hero__cta">
+                            <a href="#oficinas" class="btn-hero-primary">
+                                Ver nuestras oficinas
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                            <a href="#contacto" class="btn-hero-ghost">Contáctanos</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -83,7 +129,7 @@
             <div class="hero__panel-right">
                 <img src="/images/hero/slide1.jpg"  alt="Legal Advise – Servicios jurídicos"  class="hero__slide-image active"  data-slide="0">
                 <img src="/images/hero/slide2.jpg"  alt="Litigios estratégicos"               class="hero__slide-image"          data-slide="1">
-                <img src="/images/hero/slide3.png"  alt="Cobertura Nacional"                  class="hero__slide-image"          data-slide="2">
+                <img src="/images/hero/slide3.jpg"  alt="Cobertura Nacional"                  class="hero__slide-image"          data-slide="2">
             </div>
 
             <!-- Dot indicators -->
@@ -222,10 +268,11 @@
         <!-- ═══════════════════════════════════════════
              OFICINAS / COBERTURA
         ═══════════════════════════════════════════ -->
-        <section id="oficinas" class="section oficinas bg-light">
-            <div class="container">
-                <h2 class="section-title pre-animate">COBERTURA NACIONAL</h2>
-                <p class="section-intro pre-animate">Presencia estratégica en los principales centros económicos de la República Mexicana.</p>
+        <section id="oficinas" class="section oficinas parallax-section" style="background-image: url('/images/fondos/cobertura.jpg');">
+            <div class="parallax-overlay"></div>
+            <div class="container" style="position:relative;z-index:3;">
+                <h2 class="section-title color-white pre-animate">COBERTURA NACIONAL</h2>
+                <p class="section-intro color-white pre-animate">Presencia estratégica en los principales centros económicos de la República Mexicana.</p>
                 <div class="oficinas__grid">
                     <div class="office-card pre-animate">
                         <div class="office-card__icon">
@@ -278,52 +325,52 @@
             <div class="container">
                 <h2 class="section-title pre-animate">NUESTROS SERVICIOS</h2>
                 <div class="servicios__grid">
-                    <div class="image-card pre-animate" style="background-image: url('/images/services/litigio-mercantil.jpg');">
+                    <div class="image-card pre-animate" data-service="mercantil" style="background-image: url('/images/services/litigio-mercantil.jpg');">
                         <div class="image-card__overlay"></div>
                         <div class="image-card__content">
                             <h3>LITIGIO MERCANTIL Y CIVIL</h3>
                             <p>Recuperación experta de cartera vencida y conflictos entre particulares.</p>
-                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoría</a>
+                            <button class="btn-service-detail">Ver detalle &rsaquo;</button>
                         </div>
                     </div>
-                    <div class="image-card pre-animate" style="background-image: url('/images/services/litigio-administrativo.jpg');" style="transition-delay:0.1s">
+                    <div class="image-card pre-animate" data-service="administrativo" style="background-image: url('/images/services/litigio-administrativo.jpg'); transition-delay:0.1s">
                         <div class="image-card__overlay"></div>
                         <div class="image-card__content">
                             <h3>LITIGIO ADMINISTRATIVO</h3>
                             <p>Defensa firme en resoluciones de autoridades estatales y federales.</p>
-                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoría</a>
+                            <button class="btn-service-detail">Ver detalle &rsaquo;</button>
                         </div>
                     </div>
-                    <div class="image-card pre-animate" style="background-image: url('/images/services/amparo.jpg');" style="transition-delay:0.2s">
+                    <div class="image-card pre-animate" data-service="amparo" style="background-image: url('/images/services/amparo.jpg'); transition-delay:0.2s">
                         <div class="image-card__overlay"></div>
                         <div class="image-card__content">
                             <h3>CONSTITUCIONAL Y AMPARO</h3>
                             <p>Protección estratégica de tus derechos fundamentales como empresa.</p>
-                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoría</a>
+                            <button class="btn-service-detail">Ver detalle &rsaquo;</button>
                         </div>
                     </div>
-                    <div class="image-card pre-animate" style="background-image: url('/images/services/fiscal.jpg');" style="transition-delay:0.3s">
+                    <div class="image-card pre-animate" data-service="fiscal" style="background-image: url('/images/services/fiscal.jpg'); transition-delay:0.3s">
                         <div class="image-card__overlay"></div>
                         <div class="image-card__content">
                             <h3>MATERIA FISCAL</h3>
                             <p>Planeación y defensa contra contingencias tributarias severas.</p>
-                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoría</a>
+                            <button class="btn-service-detail">Ver detalle &rsaquo;</button>
                         </div>
                     </div>
-                    <div class="image-card pre-animate" style="background-image: url('/images/services/corporativo.jpg');" style="transition-delay:0.4s">
+                    <div class="image-card pre-animate" data-service="corporativo" style="background-image: url('/images/services/corporativo.jpg'); transition-delay:0.4s">
                         <div class="image-card__overlay"></div>
                         <div class="image-card__content">
                             <h3>ASESORÍA CORPORATIVA</h3>
                             <p>Estructuración, contratos y cumplimiento normativo integral.</p>
-                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoría</a>
+                            <button class="btn-service-detail">Ver detalle &rsaquo;</button>
                         </div>
                     </div>
-                    <div class="image-card pre-animate" style="background-image: url('/images/services/call.jpg');" style="transition-delay:0.5s">
+                    <div class="image-card pre-animate" data-service="callcenter" style="background-image: url('/images/services/call.jpg'); transition-delay:0.5s">
                         <div class="image-card__overlay"></div>
                         <div class="image-card__content">
                             <h3>CALL CENTER</h3>
                             <p>Gestión eficiente y profesional de cobranza extrajudicial masiva.</p>
-                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoría</a>
+                            <button class="btn-service-detail">Ver detalle &rsaquo;</button>
                         </div>
                     </div>
                 </div>
@@ -333,9 +380,10 @@
         <!-- ═══════════════════════════════════════════
              CONTACTO
         ═══════════════════════════════════════════ -->
-        <section id="contacto" class="section contacto bg-light">
-            <div class="container">
-                <h2 class="section-title pre-animate">CONTÁCTANOS</h2>
+        <section id="contacto" class="section contacto parallax-section" style="background-image: url('/images/fondos/contacto.jpg');">
+            <div class="parallax-overlay"></div>
+            <div class="container" style="position:relative;z-index:3;">
+                <h2 class="section-title color-white pre-animate">CONTÁCTANOS</h2>
                 <div class="contacto__grid">
                     <div class="contacto__info pre-animate">
                         <h3>DATOS DE CONTACTO</h3>
@@ -410,6 +458,35 @@
             </div>
         </section>
     </main>
+
+    <!-- ═════════════════════════════════════════════
+         SERVICE DRAWER
+    ═════════════════════════════════════════════ -->
+    <div id="drawerBackdrop" class="service-drawer-backdrop" aria-hidden="true"></div>
+
+    <aside id="serviceDrawer" class="service-drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+        <!-- Gold accent bar is injected by ::before in SCSS -->
+        <div class="service-drawer__header">
+            <div class="service-drawer__titles">
+                <span class="service-drawer__service-label" id="drawerSubtitle"></span>
+                <h2 class="service-drawer__title" id="drawerTitle"></h2>
+            </div>
+            <button id="drawerClose" class="service-drawer__close" aria-label="Cerrar">&times;</button>
+        </div>
+
+        <div class="service-drawer__body">
+            <p class="service-drawer__intro" id="drawerIntro"></p>
+            <div class="service-drawer__text" id="drawerBody"></div>
+            <p class="service-drawer__list-title" id="drawerListTitle" style="display:none">Servicios incluidos</p>
+            <ul class="service-drawer__list" id="drawerList"></ul>
+        </div>
+
+        <div class="service-drawer__footer">
+            <a href="#contacto" id="drawerCta" class="btn btn-primary btn-block" onclick="document.getElementById('serviceDrawer').classList.remove('open'); document.getElementById('drawerBackdrop').classList.remove('open'); document.body.style.overflow=''">
+                Solicitar asesoría sobre este servicio
+            </a>
+        </div>
+    </aside>
 
     <!-- ═══════════════════════════════════════════
          FOOTER

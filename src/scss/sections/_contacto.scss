@@ -301,3 +301,48 @@
         }
     }
 }
+
+// ── Overrides when inside a parallax dark section ─────────
+.parallax-section {
+
+    // Office cards — keep white but slightly glassy
+    .office-card {
+        background: rgba($color-white, 0.95);
+    }
+
+    // Contact info — text needs to read on dark overlay
+    .contacto__info h3 {
+        color: $color-gold;
+    }
+
+    .contacto__tagline {
+        color: rgba($color-white, 0.82);
+    }
+
+    .contact-list li>div {
+        strong {
+            color: rgba($color-white, 0.55);
+        }
+
+        a,
+        span {
+            color: rgba($color-white, 0.85);
+
+            &:hover {
+                color: $color-white;
+            }
+        }
+    }
+
+    .contact-icon {
+        background: rgba($color-white, 0.1);
+
+        svg {
+            stroke: $color-gold;
+        }
+    }
+}
+// #contacto is directly above the dark footer � remove bottom diagonal divider
+#contacto.parallax-section::after {
+    display: none;
+}

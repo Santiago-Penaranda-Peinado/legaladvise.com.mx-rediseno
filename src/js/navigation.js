@@ -30,17 +30,20 @@ export function initNavigation() {
     // ── Close menu on nav link click + smooth scroll ──────
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
+            const href = link.getAttribute('href');
 
-            // Close menu
+            // Close mobile menu regardless of link type
             menuToggle?.classList.remove('active');
             navList?.classList.remove('active');
             menuToggle?.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
 
-            // Smooth scroll
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
+            // External links (not starting with #) — let the browser handle them normally
+            if (!href || !href.startsWith('#')) return;
+
+            // Internal anchor: smooth scroll
+            e.preventDefault();
+            const targetSection = document.querySelector(href);
             if (targetSection) {
                 const headerHeight = header.offsetHeight;
                 const offsetPosition =

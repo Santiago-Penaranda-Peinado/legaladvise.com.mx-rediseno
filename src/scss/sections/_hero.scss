@@ -178,14 +178,14 @@
 
     // ── Text Content ──────────────────────────────────────
     &__content-wrapper {
-        padding-left: 100px;
+        padding-left: clamp(60px, 12%, 180px);
         padding-right: 60px;
         position: relative;
         z-index: 4;
         width: 100%;
 
         @media (max-width: $bp-large) {
-            padding-left: 80px;
+            padding-left: clamp(60px, 9%, 140px);
         }
 
         @media (max-width: $bp-desktop) {
@@ -204,7 +204,12 @@
     }
 
     &__content {
-        max-width: 560px;
+        max-width: 540px;
+        display: none; // JS shows the active one
+
+        &.active {
+            display: block;
+        }
 
         @media (max-width: $bp-tablet) {
             max-width: 100%;

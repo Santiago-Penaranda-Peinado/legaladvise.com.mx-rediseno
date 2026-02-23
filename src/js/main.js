@@ -2,6 +2,7 @@ import '../scss/style.scss';
 import { initNavigation } from './navigation.js';
 import { initAnimations, initCounters } from './utils.js';
 import { initSlider } from './slider.js';
+import { initServiceDrawer } from './services.js';
 
 // ── Preloader ─────────────────────────────────────────────
 // Se muestra desde que el HTML existe; se elimina al disparar
@@ -41,6 +42,7 @@ function init() {
     initAnimations();
     initCounters();
     initSlider();
+    initServiceDrawer();
 }
 
 if (document.readyState === 'loading') {

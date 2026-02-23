@@ -1,10 +1,10 @@
 // =========================================================
-// slider.js — New hero split-screen carousel
-// Operates on hero__slide-image elements (right panel)
-// + dot indicators + swipe support
+// slider.js — Hero split-screen carousel
+// Rotates both the right-panel images AND the left-panel content blocks
 // =========================================================
 export function initSlider() {
     const slideImages = document.querySelectorAll('.hero__slide-image');
+    const contentBlocks = document.querySelectorAll('.hero__content');
     const btnNext = document.querySelector('.hero__nav--next');
     const btnPrev = document.querySelector('.hero__nav--prev');
     const indicatorsContainer = document.getElementById('heroIndicators');
@@ -28,44 +28,34 @@ export function initSlider() {
 
     // ── Core: go to slide ─────────────────────────────────
     function goToSlide(index) {
-        // Remove active from current slide image
+        // Deactivate current
         slideImages[currentSlide].classList.remove('active');
         dots[currentSlide].classList.remove('active');
+        if (contentBlocks[currentSlide]) contentBlocks[currentSlide].classList.remove('active');
 
         currentSlide = (index + totalSlides) % totalSlides;
 
-        // Apply active to new slide image (Ken Burns restarts via CSS animation)
+        // Activate new
         slideImages[currentSlide].classList.add('active');
         dots[currentSlide].classList.add('active');
+        if (contentBlocks[currentSlide]) contentBlocks[currentSlide].classList.add('active');
 
-        // Replay text animation
+        // Replay text animations
         const hero = document.querySelector('.hero');
         if (hero) {
             hero.classList.remove('hero--animated');
-            // Force reflow to restart animation
-            void hero.offsetWidth;
+            void hero.offsetWidth; // Force reflow
             hero.classList.add('hero--animated');
         }
     }
 
     // ── Arrow controls ────────────────────────────────────
-    if (btnNext) {
-        btnNext.addEventListener('click', () => {
-            goToSlide(currentSlide + 1);
-            resetAutoPlay();
-        });
-    }
-
-    if (btnPrev) {
-        btnPrev.addEventListener('click', () => {
-            goToSlide(currentSlide - 1);
-            resetAutoPlay();
-        });
-    }
+    btnNext?.addEventListener('click', () => { goToSlide(currentSlide + 1); resetAutoPlay(); });
+    btnPrev?.addEventListener('click', () => { goToSlide(currentSlide - 1); resetAutoPlay(); });
 
     // ── Autoplay ──────────────────────────────────────────
     function startAutoPlay() {
-        autoPlayInterval = setInterval(() => goToSlide(currentSlide + 1), 6000);
+        autoPlayInterval = setInterval(() => goToSlide(currentSlide + 1), 6500);
     }
 
     function resetAutoPlay() {
@@ -79,23 +69,16 @@ export function initSlider() {
     const hero = document.querySelector('.hero');
     if (hero) {
         let touchStartX = 0;
-        let touchEndX = 0;
-        const SWIPE_THRESHOLD = 50;
+        const THRESHOLD = 50;
 
         hero.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
         }, { passive: true });
 
         hero.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            const diff = touchStartX - touchEndX;
-
-            if (Math.abs(diff) > SWIPE_THRESHOLD) {
-                if (diff > 0) {
-                    goToSlide(currentSlide + 1); // swipe left → next
-                } else {
-                    goToSlide(currentSlide - 1); // swipe right → prev
-                }
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > THRESHOLD) {
+                goToSlide(diff > 0 ? currentSlide + 1 : currentSlide - 1);
                 resetAutoPlay();
             }
         }, { passive: true });
