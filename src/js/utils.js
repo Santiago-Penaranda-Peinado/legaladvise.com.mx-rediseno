@@ -1,25 +1,67 @@
-// utils.js
+// =========================================================
+// utils.js — Scroll animations + Counter animations
+// =========================================================
+
+// ── Scroll reveal (IntersectionObserver) ─────────────────
 export function initAnimations() {
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15
-    };
+    const animatables = document.querySelectorAll('.pre-animate');
+    if (animatables.length === 0) return;
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-                observer.unobserve(entry.target); // Only animate once
-            }
-        });
-    }, observerOptions);
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.12 }
+    );
 
-    // Add elements to observe
-    const animatableElements = document.querySelectorAll('.split-layout__image, .split-layout__content, .timeline-card, .image-card, .quote-block, .section-title, .office-location');
+    animatables.forEach(el => observer.observe(el));
+}
 
-    animatableElements.forEach(el => {
-        el.classList.add('pre-animate');
-        observer.observe(el);
-    });
+// ── Number Counter animation ──────────────────────────────
+export function initCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    if (counters.length === 0) return;
+
+    const easingFn = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // ease in-out quad
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.5 }
+    );
+
+    counters.forEach(counter => observer.observe(counter));
+}
+
+function animateCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const duration = 1800; // ms
+    const start = performance.now();
+
+    function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const value = Math.floor(progress * target);
+
+        el.textContent = value.toLocaleString('es-MX');
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            el.textContent = target.toLocaleString('es-MX');
+        }
+    }
+
+    requestAnimationFrame(update);
 }

@@ -1,15 +1,18 @@
 @import "variables";
 @import "mixins";
 
-// Global Section Titles
+// ── Section Titles ────────────────────────────────────────
 .section-title {
+    font-family: $font-primary;
     text-align: center;
-    font-size: 2.5rem;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 800;
     text-transform: uppercase;
+    letter-spacing: 2px;
     position: relative;
     padding-bottom: 20px;
     margin-bottom: 60px;
-    letter-spacing: 1px;
+    color: $color-primary;
 
     &::after {
         content: '';
@@ -17,9 +20,19 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        width: 80px;
+        width: 50px;
         height: 3px;
-        background-color: $color-secondary; // Red accent
+        background: linear-gradient(90deg, $color-secondary, $color-gold);
+        border-radius: 2px;
+    }
+
+    &.text-left {
+        text-align: left;
+
+        &::after {
+            left: 0;
+            transform: none;
+        }
     }
 
     &.color-white {
@@ -27,21 +40,10 @@
     }
 }
 
-// Global Layout Classes
-.text-block {
-    max-width: 900px;
-    margin: 0 auto;
-
-    p {
-        margin-bottom: 20px;
-        font-size: 1.1rem;
-        line-height: 1.8;
-    }
-}
-
+// ── Split Layout (2-col: image + text) ────────────────────
 .split-layout {
     display: flex;
-    gap: 50px;
+    gap: 60px;
     align-items: flex-start;
 
     @media (max-width: $bp-desktop) {
@@ -72,30 +74,25 @@
     }
 }
 
-// Utility Layout Classes
-.grid-gallery {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-}
-
+// ── Image utilities ───────────────────────────────────────
 .rounded-image {
-    border-radius: 12px;
+    border-radius: 10px;
 }
 
 .shadow-lg {
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
 .shadow-sm {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .framed-image {
-    border: 10px solid $color-white;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 8px solid rgba($color-white, 0.9);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
 }
 
+// ── Text utilities ────────────────────────────────────────
 .text-left {
     text-align: left;
 }
@@ -104,12 +101,16 @@
     text-align: center;
 }
 
+// ── Check list ────────────────────────────────────────────
 .check-list {
     li {
         position: relative;
-        padding-left: 30px;
-        margin-bottom: 15px;
+        padding-left: 28px;
+        margin-bottom: 14px;
         font-weight: 500;
+        font-size: 0.95rem;
+        color: $color-text;
+        line-height: 1.5;
 
         &::before {
             content: "✓";
@@ -117,15 +118,12 @@
             left: 0;
             top: 0;
             color: $color-secondary;
-            font-weight: bold;
+            font-weight: 700;
         }
     }
 }
 
-.mt-4 {
-    margin-top: 1.5rem;
-}
-
+// ── Animations ────────────────────────────────────────────
 @keyframes fadeInUp {
     from {
         opacity: 0;

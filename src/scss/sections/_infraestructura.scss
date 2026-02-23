@@ -1,56 +1,99 @@
-// Infraestructura Section
+// =========================================================
+// INFRAESTRUCTURA SECTION
+// =========================================================
+@import "../variables";
+@import "../mixins";
+
+.infraestructura {
+    .subtitle {
+        font-family: $font-primary;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: $color-primary;
+        margin-bottom: 1.2rem;
+        line-height: 1.4;
+    }
+
+    p {
+        color: $color-text-muted;
+        font-size: 1rem;
+        line-height: 1.75;
+        margin-bottom: 1rem;
+    }
+}
 
 .overlapping-layout {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 80px;
     position: relative;
-    padding: 2rem 0;
+    padding: 2rem 0 4rem;
 
     @media (max-width: $bp-desktop) {
         flex-direction: column;
+        gap: 60px;
     }
 
     &__text {
         flex: 1;
-        padding-right: 40px;
+        max-width: 500px;
         z-index: 2;
 
         @media (max-width: $bp-desktop) {
-            padding-right: 0;
-            margin-bottom: 40px;
+            max-width: 100%;
         }
     }
 
     &__images {
         flex: 1;
         position: relative;
-        height: 500px;
+        height: 520px;
         width: 100%;
 
         @media (max-width: $bp-desktop) {
-            height: 400px;
+            height: 420px;
+        }
+
+        @media (max-width: $bp-mobile) {
+            height: 340px;
         }
 
         .img-back {
             position: absolute;
             top: 0;
             right: 0;
-            width: 70%;
-            height: auto;
-            z-index: 1;
+            width: 72%;
+            height: 82%;
             object-fit: cover;
+            z-index: 1;
         }
 
         .img-front {
             position: absolute;
-            bottom: -30px;
+            bottom: 0;
             left: 0;
-            width: 65%;
-            height: auto;
+            width: 60%;
+            height: 65%;
+            object-fit: cover;
             z-index: 2;
             border: 8px solid $color-white;
-            object-fit: cover;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        // Decorative accent corner square
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            border: 3px solid $color-gold;
+            z-index: 0;
+
+            @media (max-width: $bp-desktop) {
+                display: none;
+            }
         }
     }
 }

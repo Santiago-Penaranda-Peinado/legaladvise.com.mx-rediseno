@@ -1,14 +1,17 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap');
 
 $font-primary: 'Outfit', sans-serif;
 $font-secondary: 'Inter', sans-serif;
+$font-display: 'Playfair Display', serif;
 
 // Colors
-$color-primary: #11284b; // Azul oscuro corporativo (Dark blue)
-$color-secondary: #e62336; // Rojo/Carmesí corporativo (Red)
+$color-primary: #11284b; // Azul oscuro corporativo
+$color-secondary: #e62336; // Rojo/Carmesí corporativo
+$color-gold: #c9a84c; // Dorado acento premium
 $color-white: #ffffff;
 $color-light-gray: #f2f5f8;
+$color-dark: #080f1a; // Negro profundo para hero
 $color-text: #333333;
 $color-text-muted: #666666;
 
@@ -17,3 +20,12 @@ $bp-mobile: 480px;
 $bp-tablet: 768px;
 $bp-desktop: 1024px;
 $bp-large: 1200px;
+
+// Transitions
+$transition-base: all 0.3s ease;
+$transition-slow: all 0.6s ease;
+
+// Z-indexes
+$z-header: 1000;
+$z-mobile-nav: 999;
+$z-hero: 1;

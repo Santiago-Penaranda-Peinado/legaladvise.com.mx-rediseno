@@ -1,48 +1,77 @@
-// navigation.js
+// =========================================================
+// navigation.js — Header scroll + mobile menu + active links
+// =========================================================
 export function initNavigation() {
     const header = document.getElementById('main-header');
     const menuToggle = document.querySelector('.menu-toggle');
     const navList = document.querySelector('.nav__list');
     const navLinks = document.querySelectorAll('.nav__link');
 
-    // Sticky Header
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    if (!header) return;
 
-    // Mobile Menu Toggle
-    menuToggle.addEventListener('click', () => {
-        menuToggle.classList.toggle('active');
-        navList.classList.toggle('active');
-    });
+    // ── Sticky / scrolled header ──────────────────────────
+    const handleScroll = () => {
+        header.classList.toggle('scrolled', window.scrollY > 60);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Run on load
 
-    // Close mobile menu on link click & Smooth Scroll
+    // ── Mobile menu toggle ────────────────────────────────
+    if (menuToggle && navList) {
+        menuToggle.addEventListener('click', () => {
+            const isOpen = menuToggle.classList.toggle('active');
+            navList.classList.toggle('active', isOpen);
+            menuToggle.setAttribute('aria-expanded', isOpen.toString());
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+    }
+
+    // ── Close menu on nav link click + smooth scroll ──────
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
 
             // Close menu
-            menuToggle.classList.remove('active');
-            navList.classList.remove('active');
+            menuToggle?.classList.remove('active');
+            navList?.classList.remove('active');
+            menuToggle?.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
 
-            // Scroll to section
+            // Smooth scroll
             const targetId = link.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-
             if (targetSection) {
                 const headerHeight = header.offsetHeight;
-                const elementPosition = targetSection.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+                const offsetPosition =
+                    targetSection.getBoundingClientRect().top +
+                    window.pageYOffset - headerHeight;
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
             }
         });
     });
+
+    // ── Active nav link on scroll (IntersectionObserver) ──
+    const sections = document.querySelectorAll('section[id], div[id]');
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const activeId = entry.target.id;
+                    navLinks.forEach(link => {
+                        const href = link.getAttribute('href');
+                        link.classList.toggle('active', href === `#${activeId}`);
+                    });
+                }
+            });
+        },
+        {
+            rootMargin: '-30% 0px -60% 0px',
+            threshold: 0
+        }
+    );
+
+    sections.forEach(section => observer.observe(section));
 }

@@ -1,94 +1,303 @@
-// Contact Form and Location styling
+// =========================================================
+// CONTACTO & OFICINAS SECTIONS
+// =========================================================
+@import "../variables";
+@import "../mixins";
 
-.oficinas__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+// ── Section intro text ───────────────────────────────────
+.section-intro {
+    text-align: center;
+    color: $color-text-muted;
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: -40px auto 50px;
+    line-height: 1.7;
 }
 
-.contacto__grid {
+// ── Oficinas / Office Cards ───────────────────────────────
+.oficinas__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
 
-    @media (max-width: $bp-tablet) {
+    @media (max-width: $bp-desktop) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: $bp-mobile) {
         grid-template-columns: 1fr;
+    }
+
+    // Last item centered if there are 5 items (3+2 layout)
+    .office-card:last-child:nth-child(3n - 2) {
+        @media (min-width: $bp-desktop) {
+            grid-column: 2;
+        }
     }
 }
 
-.office-location {
-    padding: 30px;
-    background-color: $color-white;
-    border-left: 4px solid $color-secondary;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+.office-card {
+    background: $color-white;
+    border-radius: 10px;
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border-top: 4px solid transparent;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, $color-secondary, $color-gold);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+
+        &::before {
+            transform: scaleX(1);
+        }
+
+        .office-card__icon svg {
+            stroke: $color-secondary;
+            transform: scale(1.15);
+        }
+    }
+
+    &__icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 16px;
+
+        svg {
+            width: 100%;
+            height: 100%;
+            stroke: $color-gold;
+            transition: stroke 0.3s ease, transform 0.3s ease;
+        }
+    }
 
     h4 {
+        font-family: $font-primary;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 2px;
         color: $color-primary;
-        font-size: 1.2rem;
-        margin-bottom: 15px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
     }
 
     p {
         font-size: 0.9rem;
         color: $color-text-muted;
-        margin-bottom: 8px;
+        line-height: 1.65;
+        margin-bottom: 14px;
+    }
 
-        &:last-child {
-            color: $color-primary;
-            font-weight: 500;
-            margin-top: 15px;
+    &__phone {
+        display: inline-block;
+        font-family: $font-primary;
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: $color-secondary;
+        letter-spacing: 0.5px;
+    }
+}
+
+// ── Contacto Grid ─────────────────────────────────────────
+.contacto__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 60px;
+    align-items: start;
+
+    @media (max-width: $bp-tablet) {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+// ── Contact Info ──────────────────────────────────────────
+.contacto__info {
+    h3 {
+        font-family: $font-primary;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        color: $color-secondary;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+    }
+}
+
+.contacto__tagline {
+    font-size: 1.1rem;
+    color: $color-text-muted;
+    line-height: 1.65;
+    margin-bottom: 30px;
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+
+    li {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+    }
+}
+
+.contact-icon {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 10px;
+    background: rgba($color-primary, 0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+
+    svg {
+        width: 20px;
+        height: 20px;
+        stroke: $color-primary;
+    }
+
+    &:hover {
+        background: rgba($color-secondary, 0.1);
+
+        svg {
+            stroke: $color-secondary;
         }
+    }
+
+    // Inside li — make the whole li hoverable
+    li:hover & {
+        background: rgba($color-primary, 0.12);
     }
 }
 
 .contact-list {
-    margin-top: 30px;
-
-    li {
-        margin-bottom: 20px;
+    li>div {
         display: flex;
-        align-items: flex-start;
-        gap: 15px;
-        font-size: 1rem;
-        color: $color-text-muted;
+        flex-direction: column;
+        gap: 3px;
+        padding-top: 4px;
+
+        strong {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: $color-primary;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        a,
+        span {
+            font-size: 0.95rem;
+            color: $color-text-muted;
+            line-height: 1.5;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: $color-secondary;
+        }
     }
 }
 
+// ── Contact Form ──────────────────────────────────────────
 .contacto__form {
     background: $color-white;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 44px;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.09);
+
+    @media (max-width: $bp-mobile) {
+        padding: 28px 20px;
+    }
 
     .form-group {
         margin-bottom: 20px;
+
+        label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: $color-primary;
+            margin-bottom: 8px;
+        }
     }
 
     input,
     textarea {
         width: 100%;
-        padding: 15px 20px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
+        padding: 14px 18px;
+        border: 1.5px solid #e0e5ec;
+        border-radius: 6px;
         font-family: $font-secondary;
         font-size: 0.95rem;
+        color: $color-text;
+        background-color: #fdfdfe;
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        background-color: #fcfcfc;
 
         &:focus {
             outline: none;
-            border-color: $color-secondary;
-            box-shadow: 0 0 0 3px rgba($color-secondary, 0.1);
+            border-color: $color-primary;
+            box-shadow: 0 0 0 4px rgba($color-primary, 0.08);
+            background-color: $color-white;
         }
+
+        &::placeholder {
+            color: #b0b8c8;
+            font-size: 0.9rem;
+        }
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 110px;
     }
 
     .captcha-placeholder {
         margin: 20px 0;
-        padding: 15px;
-        background-color: #f5f5f5;
-        border: 1px dashed #ccc;
+        padding: 16px;
+        background: #f7f9fc;
+        border: 1px dashed #ccd3df;
+        border-radius: 6px;
         text-align: center;
-        color: #999;
-        font-size: 0.9rem;
+        color: #9aabb8;
+        font-size: 0.85rem;
+    }
+
+    .btn-block {
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 15px 30px;
+
+        svg {
+            transition: transform 0.3s ease;
+        }
+
+        &:hover svg {
+            transform: translateX(4px);
+        }
     }
 }

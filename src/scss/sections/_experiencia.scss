@@ -1,40 +1,146 @@
-.experiencia__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+// =========================================================
+// STATS BAND
+// =========================================================
+@import "../variables";
+
+.stats-band {
+    background: $color-primary;
+    position: relative;
+    overflow: hidden;
+
+    // Subtle diagonal texture
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(-55deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.02) 10px,
+                rgba(255, 255, 255, 0.02) 20px);
+        pointer-events: none;
+    }
+
+    &__inner {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+
+        @media (max-width: $bp-desktop) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: $bp-mobile) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+.stat-item {
+    padding: 44px 20px;
+    text-align: center;
+    position: relative;
+    border-right: 1px solid rgba($color-white, 0.08);
+
+    &:last-child {
+        border-right: none;
+    }
+
+    // On 2-col layout, remove right border for even items
+    @media (max-width: $bp-desktop) {
+        &:nth-child(2) {
+            border-right: none;
+        }
+
+        &:nth-child(3) {
+            border-right: 1px solid rgba($color-white, 0.08);
+            border-top: 1px solid rgba($color-white, 0.08);
+        }
+
+        &:nth-child(4) {
+            border-right: none;
+            border-top: 1px solid rgba($color-white, 0.08);
+        }
+    }
+
+    .stat-number {
+        display: inline;
+        font-family: $font-primary;
+        font-weight: 800;
+        font-size: clamp(2.2rem, 4vw, 3.5rem);
+        color: $color-white;
+        line-height: 1;
+    }
+
+    sup {
+        font-family: $font-primary;
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: $color-gold;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    >p {
+        font-family: $font-secondary;
+        font-size: 0.75rem;
+        font-weight: 400;
+        color: rgba($color-white, 0.55);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-top: 10px;
+        line-height: 1.5;
+    }
+}
+
+// =========================================================
+// EXPERIENCIA
+// =========================================================
+.experiencia {
+    .split-layout__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: 4/5;
+    }
 }
 
 .timeline-cards {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    border-left: 2px solid rgba($color-primary, 0.1);
-    padding-left: 30px;
+    gap: 28px;
+    border-left: 2px solid rgba($color-primary, 0.12);
+    padding-left: 32px;
     margin-top: 30px;
 
     .timeline-card {
         position: relative;
 
         h3 {
-            font-size: 1.2rem;
-            color: $color-primary;
-            margin-bottom: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: $color-secondary;
+            margin-bottom: 8px;
+            text-transform: uppercase;
         }
 
         p {
             color: $color-text-muted;
             font-size: 0.95rem;
+            line-height: 1.7;
         }
 
         .timeline-icon {
             position: absolute;
-            left: -39px;
-            top: 5px;
+            left: -40px;
+            top: 4px;
             width: 16px;
             height: 16px;
             background-color: $color-secondary;
             border-radius: 50%;
             border: 3px solid $color-white;
+            box-shadow: 0 0 0 2px rgba($color-secondary, 0.3);
         }
     }
 }

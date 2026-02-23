@@ -1,46 +1,200 @@
-// Footer
+// =========================================================
+// FOOTER
+// =========================================================
+@import "../variables";
+@import "../mixins";
+
 .footer {
-    background-color: darken($color-primary, 5%);
-    color: $color-white;
-    padding: 50px 0 20px;
+    background: $color-dark;
+    color: rgba($color-white, 0.75);
+    position: relative;
+
+    // Top red accent bar
+    &__accent-bar {
+        height: 4px;
+        background: linear-gradient(90deg, $color-secondary, $color-gold, $color-secondary);
+        background-size: 200% 100%;
+    }
 
     &__container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1.4fr;
+        gap: 60px;
+        padding: 70px 0 50px;
 
-    &__brand p {
-        font-family: $font-primary;
-        font-weight: 700;
-        letter-spacing: 2px;
-    }
+        @media (max-width: $bp-desktop) {
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
 
-    &__meta {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        font-size: 0.9rem;
-
-        a {
-            color: rgba($color-white, 0.7);
-            transition: color 0.3s ease;
-
-            &:hover {
-                color: $color-secondary;
-            }
+        @media (max-width: $bp-mobile) {
+            grid-template-columns: 1fr;
+            gap: 36px;
+            padding: 50px 0 36px;
         }
     }
 
-    &__copy {
-        margin-top: 30px;
-        text-align: center;
+    &__col {
+        h4 {
+            font-family: $font-primary;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: $color-white;
+            margin-bottom: 22px;
+            position: relative;
+            padding-bottom: 14px;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 28px;
+                height: 2px;
+                background: $color-gold;
+            }
+        }
+    }
+}
+
+// ── Brand col ─────────────────────────────────────────────
+.footer__brand {
+    &-name {
+        font-family: $font-primary;
+        font-weight: 800;
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+        color: $color-white;
+        margin-top: 14px;
+        margin-bottom: 4px;
+    }
+
+    &-tagline {
         font-size: 0.8rem;
-        color: rgba($color-white, 0.5);
-        border-top: 1px solid rgba($color-white, 0.1);
-        padding-top: 20px;
-        width: 100%;
+        color: rgba($color-white, 0.45);
+        letter-spacing: 0.5px;
+        margin-bottom: 20px;
+    }
+}
+
+.footer__logo {
+    height: 48px;
+    width: auto;
+}
+
+.footer__social {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.social-link {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba($color-white, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: $transition-base;
+
+    svg {
+        width: 16px;
+        height: 16px;
+        fill: rgba($color-white, 0.7);
+        transition: fill 0.3s ease;
+    }
+
+    &:hover {
+        background: $color-secondary;
+
+        svg {
+            fill: $color-white;
+        }
+    }
+}
+
+// ── Nav col ───────────────────────────────────────────────
+.footer__nav-col {
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        li a {
+            font-size: 0.9rem;
+            color: rgba($color-white, 0.6);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+            display: inline-block;
+
+            &:hover {
+                color: $color-white;
+                padding-left: 6px;
+            }
+        }
+    }
+}
+
+// ── Contact col ───────────────────────────────────────────
+.footer__contact-col {
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+
+            svg {
+                width: 16px;
+                height: 16px;
+                stroke: $color-gold;
+                flex-shrink: 0;
+                margin-top: 2px;
+            }
+
+            a,
+            span {
+                font-size: 0.88rem;
+                color: rgba($color-white, 0.6);
+                line-height: 1.5;
+                transition: color 0.3s ease;
+            }
+
+            a:hover {
+                color: $color-white;
+            }
+        }
+    }
+}
+
+.footer__privacy {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: rgba($color-white, 0.4);
+    margin-top: 20px;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: rgba($color-white, 0.8);
+    }
+}
+
+// ── Copyright bar ─────────────────────────────────────────
+.footer__copy {
+    border-top: 1px solid rgba($color-white, 0.08);
+    padding: 20px 0;
+    text-align: center;
+
+    p {
+        font-size: 0.78rem;
+        color: rgba($color-white, 0.3);
+        letter-spacing: 0.5px;
     }
 }

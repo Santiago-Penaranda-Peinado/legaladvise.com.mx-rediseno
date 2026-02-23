@@ -4,26 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Legal Advise | Servicios Jurídicos de Calidad</title>
-    <!-- Favicon and SEO tags should go here -->
-    <meta name="description" content="Legal Advise - Firma de abogados especializados en diversas áreas del Derecho Mexicano.">
+    <meta name="description" content="Legal Advise - Firma de abogados especializados en diversas áreas del Derecho Mexicano. Más de 20 años de experiencia en litigio, fiscal y corporativo.">
+    <meta name="robots" content="index, follow">
 </head>
 <body>
+    <!-- ═══════════════════════════════════════════
+         PRELOADER — se oculta al disparar window.load
+    ═══════════════════════════════════════════ -->
+    <div id="preloader" class="preloader" aria-hidden="true">
+        <div class="preloader__logo">
+            <img src="/images/logos/iconTop-min.png" alt="Legal Advise">
+        </div>
+        <div class="preloader__bar"></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         HEADER
+    ═══════════════════════════════════════════ -->
     <header id="main-header" class="header">
         <div class="container header__container">
-            <a href="#" class="logo">
-                <img src="/images/logos/iconTop-min.png" alt="Legal Advise Logo"> 
+            <a href="#inicio" class="logo">
+                <img src="/images/logos/iconTop-min.png" alt="Legal Advise Logo">
+                <span class="logo__text">LEGAL<em>ADVISE</em></span>
             </a>
-            <nav class="nav">
+            <nav class="nav" aria-label="Navegación principal">
                 <ul class="nav__list">
                     <li><a href="#experiencia" class="nav__link">Experiencia</a></li>
                     <li><a href="#filosofia" class="nav__link">Filosofía</a></li>
                     <li><a href="#infraestructura" class="nav__link">Infraestructura</a></li>
                     <li><a href="#oficinas" class="nav__link">Cobertura</a></li>
                     <li><a href="#servicios" class="nav__link">Servicios</a></li>
-                    <li><a href="#contacto" class="nav__link">Contacto</a></li>
+                    <li><a href="#contacto" class="nav__link nav__link--cta">Contacto</a></li>
                 </ul>
             </nav>
-            <button class="menu-toggle" aria-label="Abrir menú">
+            <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -32,62 +46,101 @@
     </header>
 
     <main>
-        <!-- Home / Hero Section (Carousel) -->
-        <section id="inicio" class="hero">
-            <div class="hero__slider">
-                <!-- Slide 1 -->
-                <div class="hero__slide active" style="background-image: url('images/hero/slide1.jpg');">
-                    <div class="hero__overlay"></div>
-                    <div class="container hero__content-wrapper">
-                        <div class="hero__content">
-                            <h1>LEGAL ADVISE</h1>
-                            <h2>SERVICIOS JURÍDICOS <br> <span>DE CALIDAD</span></h2>
-                            <p>Defendiendo tus intereses con integridad y experiencia comprobada.</p>
+        <!-- ═══════════════════════════════════════════
+             HERO — Split-screen + Ken Burns Carousel
+        ═══════════════════════════════════════════ -->
+        <section id="inicio" class="hero hero--animated">
+
+            <!-- LEFT PANEL: text -->
+            <div class="hero__panel-left">
+                <div class="hero__content-wrapper">
+                    <div class="hero__content">
+                        <p class="hero__kicker">Firma Jurídica · Desde 2005</p>
+
+                        <h1 class="hero__headline">
+                            LEGAL
+                            <em>Advise</em>
+                        </h1>
+
+                        <p class="hero__subheadline">
+                            Servicios jurídicos de calidad con apego a la ética, defendiendo tus intereses con integridad y experiencia comprobada en todo México.
+                        </p>
+
+                        <div class="hero__cta">
+                            <a href="#contacto" class="btn-hero-primary">
+                                Hablar con un asesor
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                            <a href="#servicios" class="btn-hero-ghost">Ver Servicios</a>
                         </div>
                     </div>
                 </div>
-                <!-- Slide 2 -->
-                <div class="hero__slide" style="background-image: url('images/hero/slide2.jpg');">
-                    <div class="hero__overlay"></div>
-                    <div class="container hero__content-wrapper">
-                        <div class="hero__content">
-                            <h1>LITIGIOS ESTRATÉGICOS</h1>
-                            <h2>MÁXIMA <br> <span>EFICIENCIA</span></h2>
-                            <p>Soluciones legales adaptadas a las necesidades corporativas y personales más exigentes.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Slide 3 -->
-                <div class="hero__slide" style="background-image: url('images/hero/slide3.png');">
-                    <div class="hero__overlay"></div>
-                    <div class="container hero__content-wrapper">
-                        <div class="hero__content">
-                            <h1>COBERTURA NACIONAL</h1>
-                            <h2>SIEMPRE <br> <span>CERCA DE TI</span></h2>
-                            <p>Contamos con oficinas en los puntos clave de la República Mexicana para respaldarte en todo momento.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slider Controls -->
-                <div class="hero__controls">
-                    <button class="hero__nav hero__nav--prev" aria-label="Anterior"><i class="icon-arrow-left">&#10094;</i></button>
-                    <button class="hero__nav hero__nav--next" aria-label="Siguiente"><i class="icon-arrow-right">&#10095;</i></button>
-                </div>
-                <div class="hero__indicators">
-                    <!-- Added via JS -->
-                </div>
+            </div>
+
+            <!-- RIGHT PANEL: rotating background images -->
+            <div class="hero__panel-right">
+                <img src="/images/hero/slide1.jpg"  alt="Legal Advise – Servicios jurídicos"  class="hero__slide-image active"  data-slide="0">
+                <img src="/images/hero/slide2.jpg"  alt="Litigios estratégicos"               class="hero__slide-image"          data-slide="1">
+                <img src="/images/hero/slide3.png"  alt="Cobertura Nacional"                  class="hero__slide-image"          data-slide="2">
+            </div>
+
+            <!-- Dot indicators -->
+            <div class="hero__indicators" id="heroIndicators">
+                <!-- Generated by JS -->
+            </div>
+
+            <!-- Arrow controls -->
+            <div class="hero__controls">
+                <button class="hero__nav hero__nav--prev" aria-label="Slide anterior">&#10094;</button>
+                <button class="hero__nav hero__nav--next" aria-label="Slide siguiente">&#10095;</button>
+            </div>
+
+            <!-- Animated scroll hint -->
+            <div class="hero__scroll-hint" aria-hidden="true">
+                <span></span>
+                <p>Scroll</p>
             </div>
         </section>
 
-        <!-- Experiencia Section -->
+        <!-- ═══════════════════════════════════════════
+             STATS BAND (between hero & experiencia)
+        ═══════════════════════════════════════════ -->
+        <div class="stats-band pre-animate">
+            <div class="stats-band__inner container">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="20">0</span>
+                    <sup>+</sup>
+                    <p>Años de<br>experiencia</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="100">0</span>
+                    <sup>+</sup>
+                    <p>Empleados<br>comprometidos</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="5">0</span>
+                    <p>Ciudades<br>en México</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="1000">0</span>
+                    <sup>+</sup>
+                    <p>Casos<br>resueltos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════
+             EXPERIENCIA
+        ═══════════════════════════════════════════ -->
         <section id="experiencia" class="section experiencia bg-light">
             <div class="container">
                 <div class="split-layout">
-                    <div class="split-layout__image">
+                    <div class="split-layout__image pre-animate">
                         <img src="/images/exp/exp-1.jpg" alt="Experiencia Legal Advise" class="rounded-image shadow-lg">
                     </div>
-                    <div class="split-layout__content">
+                    <div class="split-layout__content pre-animate">
                         <h2 class="section-title text-left">NUESTRA EXPERIENCIA</h2>
                         <div class="timeline-cards">
                             <div class="timeline-card">
@@ -111,38 +164,42 @@
             </div>
         </section>
 
-        <!-- Perfil y Filosofia Section (Merged) -->
-        <section id="perfil" class="section perfil parallax-section" style="background-image: url('/images/filo/filo.jpg');">
+        <!-- ═══════════════════════════════════════════
+             PERFIL / FILOSOFÍA — Parallax
+        ═══════════════════════════════════════════ -->
+        <section id="filosofia" class="section perfil parallax-section" style="background-image: url('/images/filo/filo.jpg');">
             <div class="parallax-overlay"></div>
             <div class="container relative z-index-1">
-                
-                <div class="split-layout reverse align-center mb-5">
+
+                <div class="split-layout reverse align-center mb-5 pre-animate">
                     <div class="split-layout__image">
                         <img src="/images/perfil/team.jpg" alt="Perfil Legal Advise" class="rounded-image framed-image">
                     </div>
                     <div class="split-layout__content">
                         <h2 class="section-title text-left color-white">PERFIL DE LA FIRMA</h2>
                         <p class="highlight-text color-white font-weight-bold">Especializados en diversas áreas del Derecho Mexicano, con sede en CDMX, Guadalajara y Hermosillo.</p>
-                        <p class="color-white">Nuestro activo más importante son las personas que la integran: un equipo experimentado con sólida trayectoria como abogados internos y consultores externos, garantizando un enfoque compatible con los fines de tu empresa (solución de conflictos, mejora continua y productividad).</p>
+                        <p class="color-white">Nuestro activo más importante son las personas que la integran: un equipo experimentado con sólida trayectoria como abogados internos y consultores externos, garantizando un enfoque compatible con los fines de tu empresa.</p>
                         <p class="color-white">Contamos con amplio conocimiento en los ámbitos crediticio, financiero, administrativo, corporativo y litigioso, respaldando con certeza las operaciones de las instituciones que confían en nosotros.</p>
                         <a href="#contacto" class="btn btn-primary mt-4">Hablar con un asesor</a>
                     </div>
                 </div>
 
-                <div class="quote-block mt-5">
+                <div class="quote-block mt-5 pre-animate">
                     <i class="icon-quote-left">"</i>
                     <blockquote>
                         Ofrecer servicios jurídicos de calidad con apego a la ética y profesionalismo, buscando la satisfacción total de cada uno de nuestros clientes que nos favorecen con su confianza.
                     </blockquote>
-                    <cite>- Filosofía Legal Advise</cite>
+                    <cite>— Filosofía Legal Advise</cite>
                 </div>
             </div>
         </section>
 
-        <!-- Infraestructura Section -->
+        <!-- ═══════════════════════════════════════════
+             INFRAESTRUCTURA
+        ═══════════════════════════════════════════ -->
         <section id="infraestructura" class="section infraestructura bg-white">
             <div class="container">
-                <div class="overlapping-layout">
+                <div class="overlapping-layout pre-animate">
                     <div class="overlapping-layout__text">
                         <h2 class="section-title text-left">INFRAESTRUCTURA Y CAPACIDAD</h2>
                         <h3 class="subtitle">Más de 100 empleados comprometidos con tu éxito.</h3>
@@ -155,137 +212,198 @@
                         </ul>
                     </div>
                     <div class="overlapping-layout__images">
-                         <img src="/images/infra/infra1.jpg" alt="Oficinas" class="img-back shadow-lg rounded-image">
-                         <img src="/images/infra/infra2.jpg" alt="Staff legal" class="img-front shadow-lg rounded-image">
+                        <img src="/images/infra/infra1.jpg" alt="Oficinas" class="img-back shadow-lg rounded-image">
+                        <img src="/images/infra/infra2.jpg" alt="Staff legal" class="img-front shadow-lg rounded-image">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Cobertura / Oficinas Section -->
+        <!-- ═══════════════════════════════════════════
+             OFICINAS / COBERTURA
+        ═══════════════════════════════════════════ -->
         <section id="oficinas" class="section oficinas bg-light">
             <div class="container">
-                <h2 class="section-title">OFICINAS</h2>
+                <h2 class="section-title pre-animate">COBERTURA NACIONAL</h2>
+                <p class="section-intro pre-animate">Presencia estratégica en los principales centros económicos de la República Mexicana.</p>
                 <div class="oficinas__grid">
-                     <div class="office-location">
-                         <h4>CIUDAD DE MÉXICO</h4>
-                         <p>Calle Montes Urales 774-1, Colonia Lomas de Chapultepec, Alc. de Miguel Hidalgo, C.P. 11000.</p>
-                         <p>T. 55- 24-54-91-68 y 69</p>
-                     </div>
-                     <div class="office-location">
-                         <h4>MONTERREY, NUEVO LEÓN</h4>
-                         <p>Edificio Motomex, Pino Suárez 750, Piso 7, oficina 717, Col. Centro, C.P. 64000.</p>
-                         <p>T. 55- 24-54-91-68 y 69</p>
-                     </div>
-                     <div class="office-location">
-                         <h4>GUADALAJARA, JALISCO</h4>
-                         <p>Calle Lerdo de Tejada 2192, Colonia Lafayette, C.P. 44150.</p>
-                         <p>T. 331 601 4285</p>
-                     </div>
-                     <div class="office-location">
-                         <h4>HERMOSILLO, SONORA</h4>
-                         <p>Calle Leobardo Chaires Olvera 149, Fraccionamiento Altares, C.P. 83296.</p>
-                         <p>T. 662 233 2359</p>
-                     </div>
-                     <div class="office-location">
-                         <h4>MÉRIDA, YUCATÁN</h4>
-                         <p>Calle 34 297 (por 41 y 39C), Colonia La Castellana, C.P. 97203.</p>
-                         <p>T. 999 2782105</p>
-                     </div>
+                    <div class="office-card pre-animate">
+                        <div class="office-card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21c-4.418 0-8-4.03-8-9a8 8 0 1116 0c0 4.97-3.582 9-8 9z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
+                        <h4>CIUDAD DE MÉXICO</h4>
+                        <p>Calle Montes Urales 774-1, Colonia Lomas de Chapultepec, Alc. Miguel Hidalgo, C.P. 11000.</p>
+                        <span class="office-card__phone">T. 55 24 54 91 68 y 69</span>
+                    </div>
+                    <div class="office-card pre-animate" style="transition-delay:0.1s">
+                        <div class="office-card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21c-4.418 0-8-4.03-8-9a8 8 0 1116 0c0 4.97-3.582 9-8 9z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
+                        <h4>MONTERREY, N.L.</h4>
+                        <p>Edificio Motomex, Pino Suárez 750, Piso 7, Ofic. 717, Col. Centro, C.P. 64000.</p>
+                        <span class="office-card__phone">T. 55 24 54 91 68 y 69</span>
+                    </div>
+                    <div class="office-card pre-animate" style="transition-delay:0.2s">
+                        <div class="office-card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21c-4.418 0-8-4.03-8-9a8 8 0 1116 0c0 4.97-3.582 9-8 9z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
+                        <h4>GUADALAJARA, JAL.</h4>
+                        <p>Calle Lerdo de Tejada 2192, Colonia Lafayette, C.P. 44150.</p>
+                        <span class="office-card__phone">T. 331 601 4285</span>
+                    </div>
+                    <div class="office-card pre-animate" style="transition-delay:0.3s">
+                        <div class="office-card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21c-4.418 0-8-4.03-8-9a8 8 0 1116 0c0 4.97-3.582 9-8 9z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
+                        <h4>HERMOSILLO, SON.</h4>
+                        <p>Calle Leobardo Chaires Olvera 149, Fraccionamiento Altares, C.P. 83296.</p>
+                        <span class="office-card__phone">T. 662 233 2359</span>
+                    </div>
+                    <div class="office-card pre-animate" style="transition-delay:0.4s">
+                        <div class="office-card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21c-4.418 0-8-4.03-8-9a8 8 0 1116 0c0 4.97-3.582 9-8 9z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
+                        <h4>MÉRIDA, YUC.</h4>
+                        <p>Calle 34 #297 (por 41 y 39C), Colonia La Castellana, C.P. 97203.</p>
+                        <span class="office-card__phone">T. 999 278 2105</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Servicios Section -->
+        <!-- ═══════════════════════════════════════════
+             SERVICIOS
+        ═══════════════════════════════════════════ -->
         <section id="servicios" class="section servicios bg-white">
             <div class="container">
-                <h2 class="section-title">NUESTROS SERVICIOS</h2>
-                <div class="servicios__grid text-center">
-                    <div class="image-card" style="background-image: url('/images/services/litigio-mercantil.jpg');">
+                <h2 class="section-title pre-animate">NUESTROS SERVICIOS</h2>
+                <div class="servicios__grid">
+                    <div class="image-card pre-animate" style="background-image: url('/images/services/litigio-mercantil.jpg');">
                         <div class="image-card__overlay"></div>
                         <div class="image-card__content">
                             <h3>LITIGIO MERCANTIL Y CIVIL</h3>
                             <p>Recuperación experta de cartera vencida y conflictos entre particulares.</p>
-                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoria</a>
+                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoría</a>
                         </div>
                     </div>
-                    <div class="image-card" style="background-image: url('/images/services/litigio-administrativo.jpg');">
+                    <div class="image-card pre-animate" style="background-image: url('/images/services/litigio-administrativo.jpg');" style="transition-delay:0.1s">
                         <div class="image-card__overlay"></div>
                         <div class="image-card__content">
                             <h3>LITIGIO ADMINISTRATIVO</h3>
                             <p>Defensa firme en resoluciones de autoridades estatales y federales.</p>
-                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoria</a>
+                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoría</a>
                         </div>
                     </div>
-                    <div class="image-card" style="background-image: url('/images/services/amparo.jpg');">
+                    <div class="image-card pre-animate" style="background-image: url('/images/services/amparo.jpg');" style="transition-delay:0.2s">
                         <div class="image-card__overlay"></div>
                         <div class="image-card__content">
                             <h3>CONSTITUCIONAL Y AMPARO</h3>
                             <p>Protección estratégica de tus derechos fundamentales como empresa.</p>
-                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoria</a>
+                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoría</a>
                         </div>
                     </div>
-                    <div class="image-card" style="background-image: url('/images/services/fiscal.jpg');">
+                    <div class="image-card pre-animate" style="background-image: url('/images/services/fiscal.jpg');" style="transition-delay:0.3s">
                         <div class="image-card__overlay"></div>
                         <div class="image-card__content">
                             <h3>MATERIA FISCAL</h3>
                             <p>Planeación y defensa contra contingencias tributarias severas.</p>
-                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoria</a>
+                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoría</a>
                         </div>
                     </div>
-                    <div class="image-card" style="background-image: url('/images/services/corporativo.jpg');">
+                    <div class="image-card pre-animate" style="background-image: url('/images/services/corporativo.jpg');" style="transition-delay:0.4s">
                         <div class="image-card__overlay"></div>
                         <div class="image-card__content">
                             <h3>ASESORÍA CORPORATIVA</h3>
                             <p>Estructuración, contratos y cumplimiento normativo integral.</p>
-                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoria</a>
+                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoría</a>
                         </div>
                     </div>
-                    <div class="image-card" style="background-image: url('/images/services/call.jpg');">
+                    <div class="image-card pre-animate" style="background-image: url('/images/services/call.jpg');" style="transition-delay:0.5s">
                         <div class="image-card__overlay"></div>
                         <div class="image-card__content">
                             <h3>CALL CENTER</h3>
                             <p>Gestión eficiente y profesional de cobranza extrajudicial masiva.</p>
-                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoria</a>
+                            <a href="#contacto" class="btn btn-outline btn-sm">Solicitar Asesoría</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contacto Section -->
+        <!-- ═══════════════════════════════════════════
+             CONTACTO
+        ═══════════════════════════════════════════ -->
         <section id="contacto" class="section contacto bg-light">
             <div class="container">
-                <h2 class="section-title">CONTACTO</h2>
+                <h2 class="section-title pre-animate">CONTÁCTANOS</h2>
                 <div class="contacto__grid">
-                    <div class="contacto__info">
+                    <div class="contacto__info pre-animate">
                         <h3>DATOS DE CONTACTO</h3>
+                        <p class="contacto__tagline">Estamos listos para ayudarte. Cuéntanos sobre tu caso.</p>
                         <ul class="contact-list">
-                            <li><i class="icon-phone"></i> 55 24 54 91 68</li>
-                            <li><i class="icon-mail"></i> administracion@legaladvise.com.mx</li>
-                            <li><i class="icon-facebook"></i> Legal Advise</li>
-                            <li><i class="icon-location"></i> Calle Montes Urales núm. 774 -1, Colonia Lomas de Chapultepec, Alcaldía de Miguel Hidalgo, C.P. 11000</li>
+                            <li>
+                                <span class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.67 12 19.79 19.79 0 01.61 3.35 2 2 0 012.6 1h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.91 8.6A16 16 0 0015.4 17.09l.96-.96a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+                                </span>
+                                <div>
+                                    <strong>Teléfono</strong>
+                                    <a href="tel:5524549168">55 24 54 91 68</a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                </span>
+                                <div>
+                                    <strong>Correo electrónico</strong>
+                                    <a href="mailto:administracion@legaladvise.com.mx">administracion@legaladvise.com.mx</a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                </span>
+                                <div>
+                                    <strong>Oficina principal</strong>
+                                    <span>Montes Urales 774-1, Lomas de Chapultepec, CDMX</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                                </span>
+                                <div>
+                                    <strong>Facebook</strong>
+                                    <a href="#" target="_blank" rel="noopener">Legal Advise</a>
+                                </div>
+                            </li>
                         </ul>
                     </div>
-                    <div class="contacto__form">
-                        <form id="contactForm">
+                    <div class="contacto__form pre-animate">
+                        <form id="contactForm" novalidate>
                             <div class="form-group">
-                                <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                                <label for="nombre">Nombre completo</label>
+                                <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan García" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" id="correo" name="correo" placeholder="Correo electrónico" required>
+                                <label for="correo">Correo electrónico</label>
+                                <input type="email" id="correo" name="correo" placeholder="correo@empresa.com" required>
                             </div>
                             <div class="form-group">
-                                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" name="telefono" placeholder="55 0000 0000" required>
                             </div>
                             <div class="form-group">
-                                <textarea id="mensaje" name="mensaje" placeholder="Mensaje" rows="4" required></textarea>
+                                <label for="mensaje">¿En qué podemos ayudarte?</label>
+                                <textarea id="mensaje" name="mensaje" placeholder="Describe brevemente tu situación..." rows="4" required></textarea>
                             </div>
-                            <!-- Captcha placeholder -->
                             <div class="captcha-placeholder">
                                 <p>reCAPTCHA Box</p>
                             </div>
-                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Enviar mensaje
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -293,20 +411,55 @@
         </section>
     </main>
 
+    <!-- ═══════════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════════ -->
     <footer class="footer">
+        <div class="footer__accent-bar"></div>
         <div class="container footer__container">
-            <div class="footer__brand">
-                <img src="images/logos/iconTop-min.png" alt="Legal Advise" style="height: 40px; margin-bottom: 10px;">
-                <p>LEGAL ADVISE</p>
+            <div class="footer__col footer__brand">
+                <img src="/images/logos/iconTop-min.png" alt="Legal Advise" class="footer__logo">
+                <p class="footer__brand-name">LEGAL ADVISE</p>
+                <p class="footer__brand-tagline">Servicios Jurídicos de Calidad</p>
+                <div class="footer__social">
+                    <a href="#" aria-label="Facebook" class="social-link">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                    </a>
+                </div>
             </div>
-            <div class="footer__meta">
-                <a href="#">Aviso de privacidad</a>
-                <a href="#"><i class="icon-facebook"></i> Legal Advise</a>
-                <a href="mailto:administracion@legaladvise.com.mx">administracion@legaladvise.com.mx</a>
-                <span>55 24 54 91 68</span>
+            <div class="footer__col footer__nav-col">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="#experiencia">Experiencia</a></li>
+                    <li><a href="#filosofia">Perfil & Filosofía</a></li>
+                    <li><a href="#infraestructura">Infraestructura</a></li>
+                    <li><a href="#oficinas">Cobertura</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
             </div>
-            <div class="footer__copy">
-                <p>Copyright © 2026 Legal Advise | Sitio diseñado con Vite & SCSS</p>
+            <div class="footer__col footer__contact-col">
+                <h4>Contacto</h4>
+                <ul>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.67 12 19.79 19.79 0 01.61 3.35 2 2 0 012.6 1h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.91 8.6A16 16 0 0015.4 17.09l.96-.96a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        <a href="tel:5524549168">55 24 54 91 68</a>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="mailto:administracion@legaladvise.com.mx">administracion@legaladvise.com.mx</a>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Montes Urales 774-1, Lomas de Chapultepec, CDMX</span>
+                    </li>
+                </ul>
+                <a href="#" class="footer__privacy">Aviso de Privacidad</a>
+            </div>
+        </div>
+        <div class="footer__copy">
+            <div class="container">
+                <p>Copyright &copy; 2026 Legal Advise | Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>

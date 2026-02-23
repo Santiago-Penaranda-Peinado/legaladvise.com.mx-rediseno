@@ -1,135 +1,422 @@
-// Hero Section & Carousel
-.hero {
-    height: 100vh;
-    min-height: 600px;
-    position: relative;
-    overflow: hidden;
+// =========================================================
+// HERO — Split-screen + Ken Burns Carousel
+// =========================================================
+@import "../variables";
+@import "../mixins";
 
-    &__slider {
-        position: relative;
-        width: 100%;
-        height: 100%;
+// Ken Burns zoom animation for background images
+@keyframes kenBurns {
+    0% {
+        transform: scale(1.0) translate(0, 0);
     }
 
-    &__slide {
+    50% {
+        transform: scale(1.08) translate(-1%, 1%);
+    }
+
+    100% {
+        transform: scale(1.0) translate(0, 0);
+    }
+}
+
+// Diagonal line decoration animation
+@keyframes lineGrow {
+    from {
+        height: 0;
+        opacity: 0;
+    }
+
+    to {
+        height: 80px;
+        opacity: 1;
+    }
+}
+
+// Text reveal animation (staggered)
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scrollBounce {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(8px);
+    }
+}
+
+// ── Wrapper ─────────────────────────────────────────────
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+    background-color: $color-dark;
+
+    // ── Left panel — text content ─────────────────────────
+    &__panel-left {
         position: absolute;
         top: 0;
         left: 0;
+        width: 55%;
+        height: 100%;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+
+        // Diagonal clip — creates the angular cut on the right edge
+        clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+        // Fully opaque so NOTHING bleeds through the diagonal edge
+        background: linear-gradient(145deg,
+                $color-dark 0%,
+                rgba($color-primary, 1) 55%,
+                $color-primary 100%);
+
+        // Decorative gold accent line (vertical)
+        &::before {
+            content: '';
+            position: absolute;
+            left: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 120px;
+            background: linear-gradient(to bottom, transparent, $color-gold, transparent);
+            z-index: 2;
+
+            @media (max-width: $bp-tablet) {
+                display: none;
+            }
+        }
+
+        @media (max-width: $bp-desktop) {
+            width: 60%;
+        }
+
+        @media (max-width: $bp-tablet) {
+            width: 100%;
+            clip-path: none;
+            background: linear-gradient(to bottom,
+                    rgba($color-dark, 0.97) 0%,
+                    rgba($color-primary, 0.92) 100%);
+        }
+    }
+
+    // ── Right panel — rotating background images ──────────
+    &__panel-right {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 55%;
+        height: 100%;
+        z-index: 1;
+        overflow: hidden;
+
+        // Dark top gradient so nav links (which overlay this panel)
+        // stay readable regardless of image content.
+        // Gradient covers roughly the header height (~120px) then fades to transparent.
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 180px;
+            background: linear-gradient(to bottom,
+                    rgba($color-dark, 0.65) 0%,
+                    rgba($color-dark, 0.0) 100%);
+            z-index: 2; // above the slide images, below slide controls
+            pointer-events: none;
+        }
+
+        @media (max-width: $bp-tablet) {
+            width: 100%;
+            opacity: 0.25; // Becomes backdrop on mobile
+        }
+    }
+
+    // Individual slide images (right side)
+    &__slide-image {
+        position: absolute;
+        inset: 0;
         width: 100%;
         height: 100%;
+        object-fit: cover;
+        object-position: center;
         opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
-        background-size: cover;
-        background-position: center;
-        background-color: #f0f0f0;
+        transition: opacity 1s ease-in-out;
 
         &.active {
             opacity: 1;
-            visibility: visible;
-            z-index: 1;
-
-            .hero__content {
-                animation: fadeInUp 1s ease forwards 0.3s;
-            }
+            animation: kenBurns 10s ease-in-out infinite;
         }
     }
 
-    &__overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(to bottom, rgba($color-primary, 0.7) 0%, rgba(0, 0, 0, 0.6) 100%);
-        z-index: 2;
-    }
-
+    // ── Text Content ──────────────────────────────────────
     &__content-wrapper {
+        padding-left: 100px;
+        padding-right: 60px;
         position: relative;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 3;
+        z-index: 4;
+        width: 100%;
+
+        @media (max-width: $bp-large) {
+            padding-left: 80px;
+        }
+
+        @media (max-width: $bp-desktop) {
+            padding-left: 60px;
+            padding-right: 40px;
+        }
+
+        @media (max-width: $bp-tablet) {
+            padding: 0 30px;
+            text-align: center;
+        }
+
+        @media (max-width: $bp-mobile) {
+            padding: 0 20px;
+        }
     }
 
     &__content {
-        color: $color-white;
-        text-align: center;
-        width: 100%;
-        padding: 0 20px;
-        opacity: 0;
-        transform: translateY(30px);
+        max-width: 560px;
 
-        h1 {
-            font-size: 4.5rem;
-            margin-bottom: 15px;
-            letter-spacing: 3px;
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        @media (max-width: $bp-tablet) {
+            max-width: 100%;
+        }
+    }
+
+    // Kicker line above headline
+    &__kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: $color-gold;
+        font-family: $font-secondary;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        opacity: 0;
+
+        &::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 2px;
+            background-color: $color-gold;
+            flex-shrink: 0;
 
             @media (max-width: $bp-tablet) {
-                font-size: 3rem;
+                display: none;
             }
         }
 
-        h2 {
-            font-size: 2rem;
-            font-weight: 400;
-            font-family: $font-secondary;
-            color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 30px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        @media (max-width: $bp-mobile) {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+        }
+    }
 
-            span {
-                font-weight: 800;
-                font-size: 2.8rem;
-                color: $color-white;
+    // Main headline
+    &__headline {
+        font-family: $font-primary;
+        font-weight: 800;
+        font-size: clamp(2.5rem, 4.5vw, 5rem);
+        line-height: 1.05;
+        color: $color-white;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 0.5rem;
+        opacity: 0;
 
-                @media (max-width: $bp-tablet) {
-                    font-size: 2rem;
+        em {
+            font-style: normal;
+            font-family: $font-display;
+            font-weight: 700;
+            color: $color-gold;
+            display: block;
+            font-size: clamp(2rem, 3.5vw, 4rem);
+            letter-spacing: 0px;
+            text-transform: none;
+        }
+    }
+
+    // Subheadline
+    &__subheadline {
+        font-family: $font-secondary;
+        font-size: clamp(1rem, 1.5vw, 1.2rem);
+        font-weight: 400;
+        color: rgba($color-white, 0.75);
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
+        max-width: 460px;
+        opacity: 0;
+
+        @media (max-width: $bp-tablet) {
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    // CTA buttons row
+    &__cta {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        opacity: 0;
+
+        @media (max-width: $bp-tablet) {
+            justify-content: center;
+        }
+
+        .btn-hero-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 36px;
+            background: $color-secondary;
+            color: $color-white;
+            font-family: $font-primary;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: 2px solid $color-secondary;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: $transition-base;
+            white-space: nowrap;
+
+            svg {
+                flex-shrink: 0;
+                transition: transform 0.3s ease;
+            }
+
+            &:hover {
+                background: darken($color-secondary, 8%);
+                border-color: darken($color-secondary, 8%);
+                box-shadow: 0 8px 25px rgba($color-secondary, 0.4);
+
+                svg {
+                    transform: translateX(5px);
                 }
             }
         }
 
-        p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 800px;
-            margin: 0 auto;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        .btn-hero-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 36px;
+            background: transparent;
+            color: $color-white;
+            font-family: $font-primary;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: 2px solid rgba($color-white, 0.35);
+            border-radius: 3px;
+            cursor: pointer;
+            transition: $transition-base;
+            white-space: nowrap;
+
+            &:hover {
+                background: rgba($color-white, 0.08);
+                border-color: rgba($color-white, 0.7);
+            }
         }
     }
 
+    // ── Slide controls (dots) ──────────────────────────────
+    &__indicators {
+        position: absolute;
+        bottom: 40px;
+        left: 100px;
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+
+        @media (max-width: $bp-desktop) {
+            left: 60px;
+        }
+
+        @media (max-width: $bp-tablet) {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .dot {
+            width: 28px;
+            height: 3px;
+            border-radius: 2px;
+            background: rgba($color-white, 0.3);
+            cursor: pointer;
+            transition: all 0.4s ease;
+
+            &.active {
+                background: $color-gold;
+                width: 48px;
+            }
+        }
+    }
+
+    // ── Nav arrows ─────────────────────────────────────────
     &__controls {
         position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
+        bottom: 40px;
+        right: 50px;
         display: flex;
-        justify-content: space-between;
-        padding: 0 30px;
-        transform: translateY(-50%);
-        z-index: 4;
-        pointer-events: none;
+        gap: 12px;
+        z-index: 10;
+
+        @media (max-width: $bp-tablet) {
+            display: none;
+        }
     }
 
     &__nav {
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(5px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        color: $color-white;
-        width: 50px;
-        height: 50px;
+        width: 44px;
+        height: 44px;
         border-radius: 50%;
+        border: 1.5px solid rgba($color-white, 0.4);
+        background: rgba($color-white, 0.08);
+        backdrop-filter: blur(4px);
+        color: $color-white;
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        cursor: pointer;
-        pointer-events: auto;
-        transition: all 0.3s ease;
-        font-size: 1.5rem;
+        font-size: 1rem;
+        transition: $transition-base;
 
         &:hover {
             background: $color-secondary;
@@ -138,27 +425,76 @@
         }
     }
 
-    &__indicators {
+    // ── Scroll indicator ───────────────────────────────────
+    &__scroll-hint {
         position: absolute;
-        bottom: 30px;
+        bottom: 40px;
         left: 50%;
         transform: translateX(-50%);
+        z-index: 10;
         display: flex;
-        gap: 10px;
-        z-index: 4;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        opacity: 0.6;
+        animation: scrollBounce 2s ease-in-out infinite;
 
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            cursor: pointer;
-            transition: all 0.3s ease;
-
-            &.active {
-                background: $color-secondary;
-                transform: scale(1.2);
-            }
+        // Only show on large screens (clutters mobile)
+        @media (max-width: $bp-desktop) {
+            display: none;
         }
+
+        span {
+            display: block;
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, $color-white);
+        }
+
+        p {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: rgba($color-white, 0.6);
+            text-transform: uppercase;
+            writing-mode: vertical-rl;
+        }
+    }
+
+    // ── Active slide animations (triggered by .active class on slide-image wrapper) ──
+    &__slide-image.active~.hero__panel-left {
+        .hero__kicker {
+            animation: slideInLeft 0.7s ease forwards 0.2s;
+        }
+
+        .hero__headline {
+            animation: fadeUp 0.8s ease forwards 0.5s;
+        }
+
+        .hero__subheadline {
+            animation: fadeUp 0.8s ease forwards 0.75s;
+        }
+
+        .hero__cta {
+            animation: fadeUp 0.8s ease forwards 1s;
+        }
+    }
+}
+
+// Animate content when slide becomes active — via JS adding .hero--animated class
+.hero--animated {
+    .hero__kicker {
+        animation: slideInLeft 0.7s ease forwards 0.2s;
+    }
+
+    .hero__headline {
+        animation: fadeUp 0.8s ease forwards 0.5s;
+    }
+
+    .hero__subheadline {
+        animation: fadeUp 0.8s ease forwards 0.75s;
+    }
+
+    .hero__cta {
+        animation: fadeUp 0.8s ease forwards 1s;
     }
 }

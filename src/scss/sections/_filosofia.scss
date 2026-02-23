@@ -1,50 +1,120 @@
-// Filosofia Section
+// =========================================================
+// FILOSOFÍA / PARALLAX SECTION
+// =========================================================
+@import "../variables";
+
 .parallax-section {
     position: relative;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    padding: 120px 0;
+    padding: 130px 0;
     color: $color-white;
 
+    // Gradient overlay: left-dark, center lighter, right-dark
     .parallax-overlay {
         position: absolute;
-        top: 0;
+        inset: 0;
+        background: linear-gradient(135deg,
+                rgba($color-dark, 0.95) 0%,
+                rgba($color-primary, 0.88) 50%,
+                rgba($color-dark, 0.94) 100%);
+    }
+
+    // Diagonal divider — top
+    &::before {
+        content: '';
+        position: absolute;
+        top: -1px;
         left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba($color-primary, 0.85);
+        width: 100%;
+        height: 60px;
+        background: $color-light-gray;
+        clip-path: polygon(0 0, 100% 0, 100% 0%, 0 100%);
+        z-index: 2;
+    }
+
+    // Diagonal divider — bottom
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background: $color-white;
+        clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);
+        z-index: 2;
+    }
+
+    @media (max-width: $bp-tablet) {
+        background-attachment: scroll; // Fix parallax on mobile
+        padding: 100px 0;
+
+        &::before,
+        &::after {
+            height: 40px;
+        }
     }
 }
 
+// Text colors for content on parallax
+.color-white {
+    color: $color-white !important;
+}
+
+.highlight-text {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+}
+
+// ── Quote block ──────────────────────────────────────────
 .quote-block {
     text-align: center;
-    max-width: 800px;
+    max-width: 820px;
     margin: 0 auto;
+    padding: 60px 40px;
+    position: relative;
+    border-top: 1px solid rgba($color-white, 0.12);
 
-    .icon-quote-left {
-        font-size: 4rem;
-        color: $color-secondary;
-        font-family: serif;
-        display: block;
-        margin-bottom: 20px;
+    @media (max-width: $bp-mobile) {
+        padding: 40px 20px;
     }
 
-    blockquote {
-        font-size: 1.8rem;
-        font-family: $font-primary;
-        font-weight: 300;
-        line-height: 1.5;
-        margin-bottom: 30px;
+    // Large decorative open-quote
+    .icon-quote-left {
+        display: block;
+        font-family: $font-display;
+        font-size: 8rem;
+        line-height: 0.4;
+        color: $color-gold;
+        opacity: 0.8;
+        margin-bottom: 2rem;
+        font-style: normal;
+        user-select: none;
 
-        @media (max-width: $bp-tablet) {
-            font-size: 1.4rem;
+        @media (max-width: $bp-mobile) {
+            font-size: 5rem;
         }
     }
 
-    cite {
-        font-size: 1.1rem;
+    blockquote {
+        font-family: $font-display;
+        font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+        font-weight: 700;
         font-style: italic;
-        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.55;
+        color: $color-white;
+        margin-bottom: 28px;
+    }
+
+    cite {
+        display: block;
+        font-size: 0.85rem;
+        font-style: normal;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $color-gold;
     }
 }

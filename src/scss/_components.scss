@@ -1,55 +1,66 @@
 @import "variables";
 @import "mixins";
 
-// Buttons
+// ── Buttons ───────────────────────────────────────────────
 .btn {
-    display: inline-block;
-    padding: 12px 35px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 32px;
     background-color: $color-primary;
     color: $color-white;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     border-radius: 4px;
     cursor: pointer;
-    font-weight: 500;
+    font-family: $font-primary;
+    font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    @include hover-transition;
+    font-size: 0.82rem;
+    letter-spacing: 1.5px;
+    transition: $transition-base;
+    white-space: nowrap;
 
     &:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-        background-color: lighten($color-primary, 10%);
+        box-shadow: 0 8px 20px rgba($color-primary, 0.3);
+        background-color: lighten($color-primary, 8%);
     }
 
     &.btn-primary {
         background-color: $color-secondary;
+        border-color: $color-secondary;
 
         &:hover {
-            background-color: lighten($color-secondary, 5%);
+            background-color: darken($color-secondary, 8%);
+            border-color: darken($color-secondary, 8%);
+            box-shadow: 0 8px 20px rgba($color-secondary, 0.35);
         }
     }
 
     &.btn-outline {
         background-color: transparent;
         color: $color-white;
-        border-color: rgba($color-white, 0.5);
-        box-shadow: none;
+        border-color: rgba($color-white, 0.45);
 
         &:hover {
-            background-color: rgba($color-white, 0.1);
+            background-color: rgba($color-white, 0.12);
             border-color: $color-white;
+            transform: translateY(-2px);
         }
     }
 
     &.btn-sm {
-        padding: 8px 20px;
-        font-size: 0.8rem;
+        padding: 8px 18px;
+        font-size: 0.75rem;
+    }
+
+    &.btn-block {
+        width: 100%;
+        justify-content: center;
     }
 }
 
-// Background utility classes
+// ── Background utilities ──────────────────────────────────
 .bg-dark {
     background-color: $color-primary;
     color: $color-white;
@@ -59,26 +70,6 @@
     background-color: $color-light-gray;
 }
 
-.bg-image {
-    background-image: url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    position: relative;
-    color: $color-white;
-
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba($color-primary, 0.9);
-    }
-
-    .container {
-        position: relative;
-        z-index: 1;
-    }
+.bg-white {
+    background-color: $color-white;
 }

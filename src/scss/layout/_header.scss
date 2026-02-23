@@ -1,17 +1,21 @@
 // Header & Nav
+@import "../variables";
+@import "../mixins";
+
 .header {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: $z-header;
     background-color: transparent;
-    transition: background-color 0.3s ease, padding 0.3s ease;
-    padding: 20px 0;
+    transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    padding: 22px 0;
 
     &.scrolled {
-        background-color: rgba($color-primary, 0.95);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        background-color: rgba($color-primary, 0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
         padding: 10px 0;
     }
 
@@ -19,34 +23,73 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 20px;
+        padding: 0 24px;
     }
 }
 
-.logo img {
-    height: 50px;
-    transition: transform 0.3s ease;
+// Logo
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
 
-    &:hover {
+    img {
+        height: 44px;
+        width: auto;
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+    }
+
+    &:hover img {
         transform: scale(1.05);
     }
+
+    &__text {
+        font-family: $font-primary;
+        font-weight: 800;
+        font-size: 1rem;
+        color: $color-white;
+        letter-spacing: 2px;
+        line-height: 1.1;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+
+        em {
+            font-style: normal;
+            font-weight: 300;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            color: $color-gold;
+        }
+
+        @media (max-width: $bp-mobile) {
+            display: none;
+        }
+    }
 }
 
+// Nav
 .nav {
     &__list {
         display: flex;
-        gap: 30px;
+        align-items: center;
+        gap: 28px;
 
         @media (max-width: $bp-tablet) {
-            display: none; // Will handle mobile menu later
+            // hidden — mobile drawer takes over
+            display: none;
         }
     }
 
     &__link {
-        color: $color-white;
+        color: rgba($color-white, 0.88);
+        font-family: $font-primary;
         font-weight: 500;
-        font-size: 0.9rem;
+        font-size: 0.82rem;
         text-transform: uppercase;
+        letter-spacing: 1.2px;
         position: relative;
         padding-bottom: 5px;
         transition: color 0.3s ease;
@@ -58,40 +101,59 @@
             left: 0;
             width: 0%;
             height: 2px;
-            background-color: $color-secondary;
+            background-color: $color-gold;
             transition: width 0.3s ease;
         }
 
         &:hover,
         &.active {
-            color: $color-secondary;
+            color: $color-white;
 
             &::after {
                 width: 100%;
             }
         }
+
+        // Contact link styled as small CTA button
+        &--cta {
+            color: $color-white;
+            background: $color-secondary;
+            padding: 7px 18px;
+            border-radius: 3px;
+            letter-spacing: 1px;
+
+            &::after {
+                display: none;
+            }
+
+            &:hover {
+                background: darken($color-secondary, 8%);
+                color: $color-white;
+            }
+        }
     }
 }
 
-// Mobile Menu Toggle
+// Mobile hamburger toggle
 .menu-toggle {
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    height: 24px;
-    width: 30px;
+    height: 22px;
+    width: 28px;
     background: transparent;
     border: none;
     cursor: pointer;
-    z-index: 1001;
+    z-index: $z-header + 1;
 
     span {
         display: block;
-        height: 3px;
+        height: 2px;
         width: 100%;
         background-color: $color-white;
-        border-radius: 3px;
-        transition: all 0.3s ease;
+        border-radius: 2px;
+        transition: all 0.35s ease;
+        transform-origin: center;
     }
 
     @media (max-width: $bp-tablet) {
@@ -104,6 +166,7 @@
 
             span:nth-child(2) {
                 opacity: 0;
+                transform: scaleX(0);
             }
 
             span:nth-child(3) {
@@ -113,7 +176,7 @@
     }
 }
 
-// Mobile Nav Active state
+// Mobile nav drawer
 @media (max-width: $bp-tablet) {
     .nav__list {
         display: flex;
@@ -122,21 +185,40 @@
         right: -100%;
         height: 100vh;
         width: 80%;
-        max-width: 400px;
-        background-color: $color-primary;
+        max-width: 360px;
+        background: rgba($color-primary, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 40px;
-        transition: right 0.4s ease;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        gap: 36px;
+        transition: right 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3);
+        z-index: $z-mobile-nav;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, $color-secondary, $color-gold);
+        }
 
         &.active {
             right: 0;
         }
 
         .nav__link {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+
+            &--cta {
+                padding: 10px 30px;
+                font-size: 0.9rem;
+            }
         }
     }
 }
