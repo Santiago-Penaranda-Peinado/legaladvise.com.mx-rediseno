@@ -1,0 +1,94 @@
+// Contact Form and Location styling
+
+.oficinas__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.contacto__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+
+    @media (max-width: $bp-tablet) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.office-location {
+    padding: 30px;
+    background-color: $color-white;
+    border-left: 4px solid $color-secondary;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+    h4 {
+        color: $color-primary;
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 0.9rem;
+        color: $color-text-muted;
+        margin-bottom: 8px;
+
+        &:last-child {
+            color: $color-primary;
+            font-weight: 500;
+            margin-top: 15px;
+        }
+    }
+}
+
+.contact-list {
+    margin-top: 30px;
+
+    li {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        font-size: 1rem;
+        color: $color-text-muted;
+    }
+}
+
+.contacto__form {
+    background: $color-white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 15px 20px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: $font-secondary;
+        font-size: 0.95rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        background-color: #fcfcfc;
+
+        &:focus {
+            outline: none;
+            border-color: $color-secondary;
+            box-shadow: 0 0 0 3px rgba($color-secondary, 0.1);
+        }
+    }
+
+    .captcha-placeholder {
+        margin: 20px 0;
+        padding: 15px;
+        background-color: #f5f5f5;
+        border: 1px dashed #ccc;
+        text-align: center;
+        color: #999;
+        font-size: 0.9rem;
+    }
+}

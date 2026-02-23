@@ -1,6 +1,22 @@
 // Partials imports
+
+// Core definitions
 @import "variables";
 @import "mixins";
 @import "base";
+
+// Global Layout & Components
 @import "layout";
 @import "components";
+
+// Layout Partials
+@import "layout/header";
+@import "layout/footer";
+
+// Section Partials
+@import "sections/hero";
+@import "sections/experiencia";
+@import "sections/filosofia";
+@import "sections/infraestructura";
+@import "sections/servicios";
+@import "sections/contacto";

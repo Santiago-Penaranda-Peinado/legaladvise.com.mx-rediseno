@@ -98,3 +98,42 @@ img {
 .servicios__grid>*:nth-child(6) {
     transition-delay: 0.6s;
 }
+
+// Custom Scrollbar
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: $color-light-gray;
+}
+
+::-webkit-scrollbar-thumb {
+    background: lighten($color-primary, 20%);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $color-secondary;
+}
+
+// Utilities
+.mb-5 {
+    margin-bottom: 3rem;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+.font-weight-bold {
+    font-weight: 700;
+}
+
+.relative {
+    position: relative;
+}
+
+.z-index-1 {
+    z-index: 1;
+}

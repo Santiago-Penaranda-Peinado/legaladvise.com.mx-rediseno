@@ -1,0 +1,95 @@
+// Servicios Section
+
+.servicios__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+// Image Cards
+.image-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 320px;
+    background-size: cover;
+    background-position: center;
+    background-color: $color-primary;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, z-index 0s;
+    z-index: 1;
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to top, rgba($color-primary, 0.95) 0%, rgba($color-primary, 0.4) 100%);
+        transition: background 0.4s ease;
+        z-index: 1;
+    }
+
+    &__content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 30px;
+        color: $color-white;
+        z-index: 2;
+        transform: translateY(80px);
+        transition: transform 0.4s ease;
+        text-align: left;
+
+        h3 {
+            color: $color-white;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            opacity: 0;
+            max-height: 0;
+            transition: opacity 0.4s ease, max-height 0.4s ease;
+        }
+
+        .btn {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+    }
+
+    &:hover {
+        transform: translateY(-10px);
+        z-index: 10;
+
+        .image-card__overlay {
+            background: linear-gradient(to top, rgba($color-primary, 0.95) 0%, rgba($color-primary, 0.7) 100%);
+        }
+
+        .image-card__content {
+            transform: translateY(0);
+
+            p {
+                opacity: 1;
+                max-height: 200px;
+            }
+
+            .btn {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            h3 {
+                color: $color-secondary;
+            }
+        }
+    }
+}

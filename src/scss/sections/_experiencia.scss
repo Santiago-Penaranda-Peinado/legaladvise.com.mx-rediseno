@@ -1,0 +1,40 @@
+.experiencia__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.timeline-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    border-left: 2px solid rgba($color-primary, 0.1);
+    padding-left: 30px;
+    margin-top: 30px;
+
+    .timeline-card {
+        position: relative;
+
+        h3 {
+            font-size: 1.2rem;
+            color: $color-primary;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: $color-text-muted;
+            font-size: 0.95rem;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: -39px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background-color: $color-secondary;
+            border-radius: 50%;
+            border: 3px solid $color-white;
+        }
+    }
+}

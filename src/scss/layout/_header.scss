@@ -1,0 +1,142 @@
+// Header & Nav
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: transparent;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+    padding: 20px 0;
+
+    &.scrolled {
+        background-color: rgba($color-primary, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 10px 0;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+}
+
+.logo img {
+    height: 50px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.nav {
+    &__list {
+        display: flex;
+        gap: 30px;
+
+        @media (max-width: $bp-tablet) {
+            display: none; // Will handle mobile menu later
+        }
+    }
+
+    &__link {
+        color: $color-white;
+        font-weight: 500;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        position: relative;
+        padding-bottom: 5px;
+        transition: color 0.3s ease;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: $color-secondary;
+            transition: width 0.3s ease;
+        }
+
+        &:hover,
+        &.active {
+            color: $color-secondary;
+
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+}
+
+// Mobile Menu Toggle
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 24px;
+    width: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+
+    span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: $color-white;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+
+    @media (max-width: $bp-tablet) {
+        display: flex;
+
+        &.active {
+            span:nth-child(1) {
+                transform: translateY(10px) rotate(45deg);
+            }
+
+            span:nth-child(2) {
+                opacity: 0;
+            }
+
+            span:nth-child(3) {
+                transform: translateY(-10px) rotate(-45deg);
+            }
+        }
+    }
+}
+
+// Mobile Nav Active state
+@media (max-width: $bp-tablet) {
+    .nav__list {
+        display: flex;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 80%;
+        max-width: 400px;
+        background-color: $color-primary;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        transition: right 0.4s ease;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+
+        &.active {
+            right: 0;
+        }
+
+        .nav__link {
+            font-size: 1.2rem;
+        }
+    }
+}

@@ -16,7 +16,7 @@ export function initAnimations() {
     }, observerOptions);
 
     // Add elements to observe
-    const animatableElements = document.querySelectorAll('.card, .section-title, .text-block, .office-location');
+    const animatableElements = document.querySelectorAll('.split-layout__image, .split-layout__content, .timeline-card, .image-card, .quote-block, .section-title, .office-location');
 
     animatableElements.forEach(el => {
         el.classList.add('pre-animate');

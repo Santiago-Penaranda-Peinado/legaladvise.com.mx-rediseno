@@ -1,0 +1,46 @@
+// Footer
+.footer {
+    background-color: darken($color-primary, 5%);
+    color: $color-white;
+    padding: 50px 0 20px;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__brand p {
+        font-family: $font-primary;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+
+    &__meta {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        font-size: 0.9rem;
+
+        a {
+            color: rgba($color-white, 0.7);
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: $color-secondary;
+            }
+        }
+    }
+
+    &__copy {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 0.8rem;
+        color: rgba($color-white, 0.5);
+        border-top: 1px solid rgba($color-white, 0.1);
+        padding-top: 20px;
+        width: 100%;
+    }
+}
