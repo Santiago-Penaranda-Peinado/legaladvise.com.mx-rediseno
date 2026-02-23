@@ -94,13 +94,13 @@ Con el contenedor corriendo (o puedes levantarlo solo para el build):
 
 ```bash
 # Opción A — contenedor ya en ejecución en segundo plano
-docker-compose exec legaladvise_vite npm run build
+docker-compose exec vite-app npm run build
 
 # Opción B — levantar solo para el build y apagar de inmediato
-docker-compose run --rm legaladvise_vite npm run build
+docker-compose run --rm vite-app npm run build
 ```
 
-> **Nota:** el nombre del servicio es `legaladvise_vite`, tal como está definido en `docker-compose.yml`.
+> **Nota:** el nombre del servicio es `vite-app`, tal como está definido en `docker-compose.yml`. El `container_name: legaladvise_vite` es solo el nombre visual del contenedor en Docker Desktop, **no** el que usan los comandos `exec` / `run`.
 
 ### 2. Qué genera el build
 
