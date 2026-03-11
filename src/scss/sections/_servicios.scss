@@ -23,7 +23,7 @@
     position: relative;
     border-radius: 10px;
     overflow: hidden;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1 / 1;
     background-size: cover;
     background-position: center;
     background-color: $color-primary;
@@ -37,9 +37,9 @@
         inset: 0;
         // Always visible gradient from bottom (content readable at all times)
         background: linear-gradient(to top,
-                rgba($color-dark, 0.95) 0%,
-                rgba($color-primary, 0.65) 40%,
-                rgba($color-primary, 0.15) 100%);
+                rgba($color-dark, 0.98) 0%,
+                rgba($color-dark, 0.85) 50%,
+                rgba($color-dark, 0.75) 100%);
         transition: background 0.45s ease;
         z-index: 1;
     }
@@ -54,11 +54,14 @@
         z-index: 2;
         // No translateY offset — content visible immediately
         transition: padding 0.4s ease;
-        text-align: left;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         h3 {
             color: $color-white;
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             font-weight: 700;
             letter-spacing: 0.5px;
             margin-bottom: 0;
@@ -67,7 +70,7 @@
         }
 
         p {
-            font-size: 0.88rem;
+            font-size: 0.95rem;
             line-height: 1.55;
             color: rgba($color-white, 0.82);
             margin-top: 0;
@@ -111,9 +114,9 @@
 
         .image-card__overlay {
             background: linear-gradient(to top,
-                    rgba($color-dark, 0.98) 0%,
-                    rgba($color-primary, 0.85) 50%,
-                    rgba($color-primary, 0.3) 100%);
+                    rgba($color-dark, 1) 0%,
+                    rgba($color-dark, 0.95) 50%,
+                    rgba($color-dark, 0.85) 100%);
         }
 
         .image-card__content {
