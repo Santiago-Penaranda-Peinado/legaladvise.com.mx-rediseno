@@ -4,7 +4,7 @@
 @import "../variables";
 @import "../mixins";
 
-// ── Section intro text ───────────────────────────────────
+// -- Section intro text --------------------------------------------------
 .section-intro {
     text-align: center;
     color: $color-text-muted;
@@ -14,24 +14,26 @@
     line-height: 1.7;
 }
 
-// ── Oficinas / Office Cards ───────────────────────────────
+// -- Oficinas / Office Cards ---------------------------------------------
 .oficinas__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 24px;
 
+    .office-card {
+        width: calc(33.333% - 16px);
+    }
+
     @media (max-width: $bp-desktop) {
-        grid-template-columns: repeat(2, 1fr);
+        .office-card {
+            width: calc(50% - 12px);
+        }
     }
 
     @media (max-width: $bp-mobile) {
-        grid-template-columns: 1fr;
-    }
-
-    // Last item centered if there are 5 items (3+2 layout)
-    .office-card:last-child:nth-child(3n - 2) {
-        @media (min-width: $bp-desktop) {
-            grid-column: 2;
+        .office-card {
+            width: 100%;
         }
     }
 }
@@ -113,7 +115,6 @@
     }
 }
 
-// ── Contacto Grid ─────────────────────────────────────────
 .contacto__grid {
     display: grid;
     grid-template-columns: 1fr 1.4fr;
@@ -126,7 +127,7 @@
     }
 }
 
-// ── Contact Info ──────────────────────────────────────────
+
 .contacto__info {
     h3 {
         font-family: $font-primary;
@@ -183,7 +184,7 @@
         }
     }
 
-    // Inside li — make the whole li hoverable
+    // Inside li ??" make the whole li hoverable
     li:hover & {
         background: rgba($color-primary, 0.12);
     }
@@ -218,7 +219,6 @@
     }
 }
 
-// ── Contact Form ──────────────────────────────────────────
 .contacto__form {
     background: $color-white;
     padding: 44px;
@@ -302,15 +302,15 @@
     }
 }
 
-// ── Overrides when inside a parallax dark section ─────────
+
 .parallax-section {
 
-    // Office cards — keep white but slightly glassy
+
     .office-card {
         background: rgba($color-white, 0.95);
     }
 
-    // Contact info — text needs to read on dark overlay
+
     .contacto__info h3 {
         color: $color-gold;
     }
@@ -342,7 +342,7 @@
         }
     }
 }
-// #contacto is directly above the dark footer � remove bottom diagonal divider
+
 #contacto.parallax-section::after {
     display: none;
 }
