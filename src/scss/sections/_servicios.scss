@@ -38,8 +38,8 @@
         // Always visible gradient from bottom (content readable at all times)
         background: linear-gradient(to top,
                 rgba($color-dark, 0.98) 0%,
-                rgba($color-dark, 0.85) 50%,
-                rgba($color-dark, 0.75) 100%);
+                rgba($color-dark, 0.90) 50%,
+                rgba($color-dark, 0.85) 100%);
         transition: background 0.45s ease;
         z-index: 1;
     }
