@@ -45,16 +45,9 @@
     }
 }
 
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes heroFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 @keyframes scrollBounce {
@@ -387,19 +380,19 @@
     // ── Active slide animations (triggered by .active class on slide-image wrapper) ──
     &__slide-image.active~.hero__panel-left {
         .hero__kicker {
-            animation: fadeUp 0.7s ease forwards 0.2s;
+            animation: heroFadeIn 0.5s ease forwards 0.1s;
         }
 
         .hero__headline {
-            animation: fadeUp 0.8s ease forwards 0.5s;
+            animation: heroFadeIn 0.6s ease forwards 0.2s;
         }
 
         .hero__subheadline {
-            animation: fadeUp 0.8s ease forwards 0.75s;
+            animation: heroFadeIn 0.6s ease forwards 0.3s;
         }
 
         .hero__cta {
-            animation: fadeUp 0.8s ease forwards 1s;
+            animation: heroFadeIn 0.6s ease forwards 0.4s;
         }
     }
 }
@@ -407,18 +400,18 @@
 // Animate content when slide becomes active — via JS adding .hero--animated class
 .hero--animated {
     .hero__kicker {
-        animation: fadeUp 0.7s ease forwards 0.2s;
+        animation: heroFadeIn 0.5s ease forwards 0.1s;
     }
 
     .hero__headline {
-        animation: fadeUp 0.8s ease forwards 0.5s;
+        animation: heroFadeIn 0.6s ease forwards 0.2s;
     }
 
     .hero__subheadline {
-        animation: fadeUp 0.8s ease forwards 0.75s;
+        animation: heroFadeIn 0.6s ease forwards 0.3s;
     }
 
     .hero__cta {
-        animation: fadeUp 0.8s ease forwards 1s;
+        animation: heroFadeIn 0.6s ease forwards 0.4s;
     }
 }
