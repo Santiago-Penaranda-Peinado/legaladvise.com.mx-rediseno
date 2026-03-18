@@ -35,7 +35,7 @@
         justify-content: center;
 
         img {
-            width: 72px;
+            width: 84px;
             height: auto;
             animation: preloaderPulse 1.4s ease-in-out infinite;
             filter: drop-shadow(0 0 18px rgba($color-gold, 0.35));
@@ -45,8 +45,8 @@
         &::before {
             content: '';
             position: absolute;
-            width: 104px;
-            height: 104px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             border: 2px solid transparent;
             border-top-color: $color-gold;

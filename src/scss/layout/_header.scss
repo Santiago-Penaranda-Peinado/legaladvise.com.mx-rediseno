@@ -35,10 +35,14 @@
     text-decoration: none;
 
     img {
-        height: 44px;
+        height: 70px;
         width: auto;
         transition: transform 0.3s ease;
         flex-shrink: 0;
+
+        @media (max-width: $bp-tablet) {
+            height: 60px;
+        }
     }
 
     &:hover img {
@@ -48,7 +52,7 @@
     &__text {
         font-family: $font-primary;
         font-weight: 800;
-        font-size: 1rem;
+        font-size: 1.25rem;
         color: $color-white;
         letter-spacing: 2px;
         line-height: 1.1;
@@ -59,7 +63,7 @@
         em {
             font-style: normal;
             font-weight: 300;
-            font-size: 0.7rem;
+            font-size: 0.85rem;
             letter-spacing: 4px;
             color: $color-gold;
         }
